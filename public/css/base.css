@@ -1,4 +1,4 @@
-/* 
+/*
 	clearfix and other misc adjustments
  */
 
@@ -16,11 +16,11 @@ body, html, h1 {
 	vertical-align: 30%;
 }
 
-/* 
+/*
 	end of clearfix and other misc adjustments
  */
 
-/* 
+/*
 	start of navigation styling
  */
 
@@ -44,12 +44,12 @@ body, html, h1 {
 	color: #000000;
 }
 
-/* 
+/*
 end of navigation styling
 */
 
 
-/* 
+/*
 	start of body styling
  */
 
@@ -57,36 +57,57 @@ end of navigation styling
 	background-color: #eeeeee;
 }
 
-/* 
+/*
 	end of body styling
 */
 
 
-/* 
+/*
 	start of styling showcase
 */
+.inner-wrapper {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url('/images/bg.jpg');
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+.border-top {
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+
+.n-cw {
+	color: #ffffff;
+}
+
 .n-heading {
 	background-color: transparent;
 	color: #009688;
 	margin: 0;
 	padding: 10px;
 }
-
+/*
 .jumbotron {
 	box-shadow: 0 0 1px #000000;
 }
 
-/* 
+/*
 	end of styling showcase
 */
 
-/* 
+/*
 	start of styling min content
 */
 
 .n-container {
 	width: 960px;
-	margin: 0 auto; 
+	margin: 0 auto;
 	text-align: justify;
 }
 
@@ -105,8 +126,14 @@ end of navigation styling
 	margin-left: 1rem;
 }
 
+.n-inwr {
+	border-bottom: 1px solid #000000;
+	padding-bottom: 5rem;
+}
+
 .n-login {
 	width: 500px;
+	padding: 0;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 3rem;
@@ -119,12 +146,12 @@ end of navigation styling
 	margin-top: 1rem;
 }
 
-/* 
+/*
 	end of styling main content
 */
 
 
-/* 
+/*
 	start of footer styling
 */
 
@@ -140,6 +167,6 @@ footer p {
 	text-align: center;
 }
 
-/* 
+/*
 	end of footer styling
 */
