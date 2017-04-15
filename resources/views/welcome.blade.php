@@ -1,95 +1,50 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>PSN :: Homepage</title>
+	<link rel="stylesheet" type="text/css" href="{{{ asset('css/app.css') }}}" />
+	<link rel="stylesheet" type="text/css" href="{{{ asset('css/base.css') }}}" />
+</head>
+<body class="main-container">
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <ul class="nav navbar-nav">
+	      <li><a href="#">learn</a></li>
+	    </ul>
+	  </div>
+	</nav>
 
-        <title>Laravel</title>
+	<div class="container-fluid jumbotron text-center n-logo">
+		<h1 class="n-heading">PSN</h1>
+		<p>the real fun starts here.</p>
+	</div>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+	<div class="n-space"></div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+	<div class="container-fluid n-login">
+		<form method="POST" action="/authenticate">
+		  <div class="input-group">
+		    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+		  </div>
+		  <div class="input-group">
+		    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+		    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+		  </div>
+		  <div class="n-actions">
+		  	<input type="submit" class="btn btn-default" value="Login"><a href="#" class="btn btn-default btn-link">Register Now ?</a>
+		  </div>
+		</form>
+	</div>
+	
+	<div class="n-space"></div>
 
-            .full-height {
-                height: 100vh;
-            }
+	<footer>
+		<div class="container-fluid n-container">
+			<p>Copyright &copy; 2017</p>
+		</div>
+	</footer>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
+</body>
 </html>
