@@ -18,6 +18,10 @@ body {
 	background-color: #5D4037;
 }
 
+.auth {
+	background-color: #FFFFFF;
+}
+
 .jumbotron {
 	background-color: transparent;
 }
@@ -75,11 +79,9 @@ body {
 	transition: left .7s;
 }
 
-
 .nav nav ul li a:hover:before {
 	left: 0%;
 }
-
 
 /* logo */
 .logo {
@@ -91,4 +93,10 @@ body {
 	margin-bottom: 4rem;
 	background-repeat: no-repeat;
 	background-image: url('../images/logo.png');
+}
+
+
+/* navbrand bar */
+.navbar-brand img {
+	height: 80px!important;
 }
