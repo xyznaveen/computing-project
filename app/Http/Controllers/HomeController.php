@@ -23,11 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
+        $collection = \App\Post::where('user_id',1)->paginate(10);
 
-    public function profile() {
-      return view('user.profile');
+        return view('home');
     }
 
 }

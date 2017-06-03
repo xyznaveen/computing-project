@@ -17,8 +17,6 @@ class CreateLikesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('post_id');
-            $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

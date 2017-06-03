@@ -18,9 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', function() { return view('register'); });
+Route::get('/register', function() { return view('register'); })->name('register');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::get('/profile', 'User\ProfileController@loadProfile')->name('profile');
+
+Route::post('user/post', ['uses' => 'User\PostController@newPost']);

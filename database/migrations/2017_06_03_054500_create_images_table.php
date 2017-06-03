@@ -17,7 +17,6 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('image_url');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

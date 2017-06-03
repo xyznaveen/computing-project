@@ -19,8 +19,6 @@ class CreateNotificationsTable extends Migration
             $table->integer('created_for');
             $table->integer('type');
             $table->integer('status');
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('created_for')->references('id')->on('users');
             $table->timestamps();
         });
     }
