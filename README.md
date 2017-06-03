@@ -1,6 +1,6 @@
 # Setting up this project
 
--- Setup --
+Instructions
 
 1.  create .env file in your home folder if there isn't already
 2.  open .env file and enter your database details i.e. host, username and password
