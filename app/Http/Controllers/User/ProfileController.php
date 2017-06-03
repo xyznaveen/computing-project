@@ -12,7 +12,7 @@ class ProfileController extends Controller
 
       $userId = auth()->user()->id;
 
-      $collection = \App\Post::where('user_id',1)->paginate(10);
+      $collection = \App\Post::where('user_id',$userId)->paginate(10);
 
       return view('user.profile', ['collection'=>$collection]);
     }

@@ -8,9 +8,10 @@
 
       </div>
       <div class="profile-details">
-        <p>User Name</p>
-        <p>user@email.address</p>
-        <p>Joined on - 2017 / 12 / 3</p>
+        <p>{{ auth()->user()->name }}</p>
+        <p>{{ auth()->user()->email }}</p>
+
+        <p>Joined on - {{ date('F d, Y', strtotime(auth()->user()->created_at)) }}</p>
         <p>Users known - 0</p>
       </div><!--
       --><div class="profile-details">
@@ -22,8 +23,14 @@
 
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      User's post
+      <u><h2>User's post(s)</h2></u>
     </div>
+    @if( count($collection) == 0 )
+    <div class="col-md-8 col-md-offset-2">
+      <h4>You have not shared anything.</h4>
+      <h5><a href="/home">post something</a> first.</h5>
+    </div>
+    @endif
     @foreach($collection as $key => $value)
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
