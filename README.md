@@ -1,6 +1,4 @@
-# computing-project
-Please read below carefully
-
+# Setting up this project
 
 -- Setup --
 
