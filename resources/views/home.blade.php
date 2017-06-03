@@ -8,9 +8,9 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default create-post">
         <div class="panel-heading">
-          write something really cool below 
+          write something really cool below
         </div>
-        <textarea class="panel-body form-control create-post-area" name="" value="" placeholder="Write something."></textarea>
+        <textarea class="panel-body form-control create-post-area" name="post" value="" placeholder="Write something."></textarea>
         <div class="panel-footer">
           <button class="btn btn-default col-md-offset-11">post</button>
         </div>

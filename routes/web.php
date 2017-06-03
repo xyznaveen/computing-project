@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
+    if(Auth::check()){
+      return view('home');
+    }
     return view('welcome');
 });
 
@@ -19,4 +22,5 @@ Route::get('/register', function() { return view('register'); });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@profile')->name('profile');

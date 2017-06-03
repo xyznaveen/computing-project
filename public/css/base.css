@@ -18,6 +18,10 @@ body {
 	background-color: #5D4037;
 }
 
+.border-above {
+	border-top: 1px solid #000000;
+}
+
 .auth {
 	background-color: #FFFFFF;
 }
@@ -95,8 +99,53 @@ body {
 	background-image: url('../images/logo.png');
 }
 
-
 /* navbrand bar */
 .navbar-brand img {
 	height: 80px!important;
+}
+
+/* status part */
+.create-post-area {
+	height: 150px!important;
+	border-radius: 0;
+	border: 0px;
+	resize: none;
+}
+
+.panel-footer {
+	padding: 0;
+}
+
+.create-post-area:focus {
+	outline: none;
+	border: 0;
+	box-shadow: 0 0 0 transparent;
+}
+
+/* this section contains user profile picture styling */
+
+.profile-picture {
+	height: 128px;
+	width: 128px;
+	background-color: #007177;
+	display: inline-block;
+}
+
+.profile-details {
+	display: inline-block;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.box {
+	border: 1px solid #007177;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	border-radius: 1rem;
+}
+
+
+/* user's new notification */
+.new-notification {
+	color: #ff0000;
 }
