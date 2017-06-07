@@ -38,7 +38,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('/images/logo.png') }}" />
+                        <img src="{{ asset('/images/logo.png') }}"/>
                     </a>
                 </div>
 
@@ -67,7 +67,7 @@
                                     <li><a href="/notification">Notifications - <span class="new-notification">0</span></a></li>
                                     <li class="border-above"><a href="/profile">My Profile</a></li>
                                     <li><a href="#">Settings</a></li>
-                                    <li><a href="#">My messages</a></li>
+                                    <li><a href="/message">My messages</a></li>
                                     <li class="border-above">
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

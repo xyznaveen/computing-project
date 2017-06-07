@@ -23,7 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $collection = \App\Post::orderBy('created_at', 'desc')->paginate(12);
+        $post = new \App\Post();
+        $collection = $post->with('user')->orderBy('created_at', 'desc')->paginate(12);
+
 
         return view('home', ['collection'=>$collection]);
     }

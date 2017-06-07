@@ -33,7 +33,7 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">
-          User Name
+          <a href="/user/{{ $value->user->email }}">{{ $value->user->name  }}</a>
         </div>
         <div class="panel-body">
           {{ $value->text }}

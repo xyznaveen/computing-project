@@ -17,4 +17,12 @@ class ProfileController extends Controller
       return view('user.profile', ['collection'=>$collection]);
     }
 
+    public function test() {
+      $user = new \App\Post;
+      $users = $user->find(auth()->user()->id)->user();
+
+      dd($users);
+
+    }
+
 }

@@ -15,7 +15,7 @@
         <p>Users known - 0</p>
       </div><!--
       --><div class="profile-details">
-        <p>Total posts - {{ DB::table('posts')->where('user_id',1)->count() }}</p>
+        <p>Total posts - {{ DB::table('posts')->where('user_id', auth()->user()->id)->count() }}</p>
         <p>Total photos - 0</p>
       </div>
     </div>

@@ -28,6 +28,11 @@ class User extends Authenticatable
     ];
 
     public function post() {
-      $this->hasMany(\App\Post::class);
+      return $this->hasMany('App\Post');
     }
+
+    public function like() {
+      return $this->hasMany('App\Like');
+    }
+
 }
