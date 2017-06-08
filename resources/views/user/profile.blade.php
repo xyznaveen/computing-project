@@ -35,6 +35,9 @@
     @foreach($collection as $key => $value)
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
+        <div class="panel-heading">
+          <a href="/user/{{auth()->user()->id}}">{{auth()->user()->name}}</a>
+        </div>
         <div class="panel-body">
           {{ $value->text }}
         </div>
@@ -83,25 +86,42 @@
       <h5><a href="/home">post something</a> first.</h5>
     </div>
     @endif
-{{ $likes = 0 }}
+    {{-- prepare like counter -- }}
+
+
+    {{-- extract each post from the collection --}}
     @foreach($collection->post as $key => $value)
+    <?php
+      $likes = 0;
+    ?>
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
+        <div class="panel-heading">
+          <a href="/user/{{$collection->id}}">{{ $collection->name }}</a>
+        </div>
         <div class="panel-body">
+          {{-- display the user's post's text --}}
           {{ $value->text }}
         </div>
         <div class="panel-footer">
-
+          {{-- extract each like from the collection, retrived using eager loading --}}
           @foreach($collection->like as $like)
+            {{-- check if the like belongs to the post --}}
             @if($value->id == $collection->like->get(0)->post_id)
-              <?php $likes++ ?>
+
+              <?php
+               // increment the counter by 1
+               $likes++;
+              ?>
+
             @endif
           @endforeach
+
           {{ $likes }} like(s) &middot;
         </div>
       </div>
     </div>
-    {{ $likes = 0 }}
+    {{-- reset the counter at the end of each loop, because next iteration will be for a different post --}}
     @endforeach
     <div class="col-md-8 col-md-offset-2">
     </div>

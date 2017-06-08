@@ -11,8 +11,8 @@ class ProfileController extends Controller
     public function loadProfile() {
 
       $userId = auth()->user()->id;
-
-      $collection = \App\Post::where('user_id',$userId)->paginate(10);
+      $post = new \App\Post();
+      $collection = $post->with('like')->where('user_id','=',$userId)->paginate(8);
 
       return view('user.profile', ['collection'=>$collection]);
     }
@@ -25,9 +25,9 @@ class ProfileController extends Controller
 
     }
 
-    public function getUser($email) {
-      $user = new \App\User;
-      $users = $user->with('post', 'like')->where('email','=',$email)->first();
+    public function getUser($id) {
+      $user = new \App\User();
+      $users = $user->with('post', 'like')->where('id','=',$id)->first();
       return view('user.profile', ['collection'=>$users]);
     }
 

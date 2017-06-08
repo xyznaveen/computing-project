@@ -34,6 +34,6 @@ Route::get('/message', [
   'uses' => 'MessageController@index'
 ]);
 
-Route::get('/user/{email}', [
+Route::get('/user/{id}', [
   'uses' => 'User\ProfileController@getUser'
 ]);
