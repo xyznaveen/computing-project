@@ -25,4 +25,10 @@ class ProfileController extends Controller
 
     }
 
+    public function getUser($email) {
+      $user = new \App\User;
+      $users = $user->with('post', 'like')->where('email','=',$email)->first();
+      return view('user.profile', ['collection'=>$users]);
+    }
+
 }

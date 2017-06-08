@@ -33,3 +33,7 @@ Route::get('/message', [
   'as' => 'message',
   'uses' => 'MessageController@index'
 ]);
+
+Route::get('/user/{email}', [
+  'uses' => 'User\ProfileController@getUser'
+]);
