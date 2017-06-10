@@ -8,6 +8,14 @@ use App\Http\Controllers\Controller;
 class PostController extends Controller
 {
 
+    public function index($userid,$postid){
+
+      $post = \App\Post::with('user', 'like')
+                         ->find($postid);
+
+      return view('user.post', ['post' => $post]);
+    }
+
     public function newPost(Request $request) {
 
       $postText = $request->post_text;

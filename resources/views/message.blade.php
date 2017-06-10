@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="">
+      <div class="pad">
         Your Friend(s) :=
         <select class="m-user" name="">
           <option value="this is empty">User's Name</option>
@@ -26,7 +26,7 @@
         </div>
         @endfor
       </div>
-      <div class="m-write">
+      <div class="m-write pad mshadow">
         <form class="m-form"method="post">
           <input type="text" name="m-text" value="" placeholder="Enter message.">
           <input type="submit" name="send" value="SEND" />

@@ -25,6 +25,37 @@ function newPost(){
   });
 }
 
+// new like through ajax
+
+function newLike() {
+  // when user clicks on the post
+  $('.pst').on('click', '.post_like', function() {
+    var userid = $('.p_userid').val();
+    var postid = $(this).prev($('.p_postid')).val();
+    var csrft = $('input[name=_token]').val();
+
+    var turl = '/'+csrft+'/'+userid+'/'+postid;
+    var pdata = 'postid='+postid;
+
+    alert(postid);
+
+
+    $.ajax({
+      type: 'get',
+      url: turl,
+      data: pdata,
+  		contentType: false,
+  		processData: false,
+      success: function(data) {
+        console.log(data);
+      },
+      error: function (data) {
+        console.log(data);
+      }
+    });
+  });
+}
+
 // hovering on like and comment buttons
 // function actionHover() {
 //   $('i.fa').on({
@@ -44,6 +75,7 @@ function init() {
   $('.alert').hide();
   $('.alert').hide();
   newPost();
+  newLike();
   //actionHover();
 }
 

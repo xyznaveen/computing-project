@@ -117,8 +117,8 @@ body {
 }
 
 .panel-footer {
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding-top: .5rem;
+	padding-bottom: .5rem;
 }
 
 .create-post-area:focus {
@@ -162,10 +162,14 @@ body {
 .m-display {
 	max-height: 350px;
 	width: 100%;
-	border: 1px solid #000000;
+	box-shadow: 0 0 5px #007177;
 	overflow-y: auto;
 	margin-top: 3rem;
 	padding: 1rem;
+}
+
+.m-write {
+	margin-top: 1rem;
 }
 
 .m-user {
@@ -229,4 +233,38 @@ body {
 .you::before {
   box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4);
   right: -9px;
+}
+
+
+.mshadow {
+	box-shadow: 0 0 5px #007177;
+}
+
+.pad {
+	padding: 1rem;
+}
+
+.bold {
+	font-weight: bolder;
+	font-size: 150%;
+}
+
+.nbr {
+	border-radius: 0;
+}
+
+.pst {
+	margin: 0;
+}
+
+.nf-post {
+	height: 1%;
+}
+
+.post-comment {
+	
+}
+
+.comment-display {
+
 }

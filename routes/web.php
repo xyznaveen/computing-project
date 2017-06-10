@@ -37,3 +37,9 @@ Route::get('/message', [
 Route::get('/user/{id}', [
   'uses' => 'User\ProfileController@getUser'
 ]);
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('/{csrft}/{user}/{post}', ['uses' => 'LikeController@newLike']);
+
+Route::get('/user/{userid}/post/{postid}', ['uses' => 'User\PostController@index']);
