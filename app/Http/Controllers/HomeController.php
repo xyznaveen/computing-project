@@ -26,7 +26,7 @@ class HomeController extends Controller
         $post = new \App\Post();
 
         // selecting post from all user except from this user
-        $collection = $post->with('user', 'like')
+        $collection = $post->with('user', 'like', 'comment')
                       ->where('user_id','<>',auth()->user()->id)
                       ->orderBy('created_at', 'desc')
                       ->paginate(12);

@@ -34,11 +34,10 @@ function newLike() {
     var postid = $(this).prev($('.p_postid')).val();
     var csrft = $('input[name=_token]').val();
 
+    var myLike = $(this).parent().parent().parent().parent().find('.panel-footer').find('.like_count');
+
     var turl = '/'+csrft+'/'+userid+'/'+postid;
     var pdata = 'postid='+postid;
-
-    alert(postid);
-
 
     $.ajax({
       type: 'get',
@@ -47,10 +46,10 @@ function newLike() {
   		contentType: false,
   		processData: false,
       success: function(data) {
-        console.log(data);
+        myLike.html(data);
       },
       error: function (data) {
-        console.log(data);
+        alert('failure');
       }
     });
   });

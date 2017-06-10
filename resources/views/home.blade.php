@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2 alert alert-success">
@@ -12,7 +13,6 @@
     </div>
   </div>
   <div class="row">
-
 
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default create-post nbr">
@@ -28,8 +28,13 @@
           </form>
       </div>
     </div>
-    @foreach($collection as $key => $value)
+    @if(count($collection) == 0)
+      <div class="col-md-8 col-md-2">
+          <center><h1>There is nothing here to show.</h1></center>
+        </div>
+    @else
 
+    @foreach($collection as $key => $value)
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default nbr">
         <div class="panel-body nbr">
@@ -48,8 +53,8 @@
           </p>
         </div>
         <div class="panel-footer">
-          <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{ $value->id }} like(s) &nbsp;&middot;&nbsp;
-          <i class="fa fa-comment" aria-hidden="true"></i> {{ $value->id }} comment(s)
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i> <span class="like_count">{{ count($collection->get($key)->like) }}</span> like(s) &nbsp;&middot;&nbsp;
+          <i class="fa fa-comment" aria-hidden="true"></i> {{ count($collection->get(0)->comment) }} comment(s)
         </div>
       </div>
     </div>
@@ -61,4 +66,5 @@
 
   </div>
 </div>
+@endif
 @endsection

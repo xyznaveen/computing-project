@@ -27,7 +27,7 @@ class ProfileController extends Controller
 
     public function getUser($id) {
       $user = new \App\User();
-      $users = $user->with('post', 'like')->where('id','=',$id)->first();
+      $users = $user->with('like','post')->where('id','=',$id)->first();
       return view('user.profile', ['collection'=>$users]);
     }
 

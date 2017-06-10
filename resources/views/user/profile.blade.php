@@ -23,7 +23,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2 mar1">
       <center><h2>User's Post(s)</h2></center>
     </div>
     @if( count($collection) == 0 )
@@ -35,10 +35,10 @@
     @foreach($collection as $key => $value)
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <a href="/user/{{auth()->user()->id}}">{{auth()->user()->name}}</a>
-        </div>
         <div class="panel-body">
+          <a href="/user/{{auth()->user()->id}}" class="bold">{{auth()->user()->name}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
+          <hr>
           {{ $value->text }}
         </div>
         <div class="panel-footer">
@@ -105,10 +105,10 @@
     ?>
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <a href="/user/{{$collection->id}}">{{ $collection->name }}</a>
-        </div>
         <div class="panel-body">
+          <a href="/user/{{$collection->id}}" class="bold">{{ $collection->name }}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
+          <hr>
           {{-- display the user's post's text --}}
           {{ $value->text }}
         </div>
