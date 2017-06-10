@@ -54,7 +54,7 @@
         </div>
         <div class="panel-footer">
           <i class="fa fa-thumbs-up" aria-hidden="true"></i> <span class="like_count">{{ count($collection->get($key)->like) }}</span> like(s) &nbsp;&middot;&nbsp;
-          <i class="fa fa-comment" aria-hidden="true"></i> {{ count($collection->get(0)->comment) }} comment(s)
+          <i class="fa fa-comment" aria-hidden="true"></i> {{ count($collection->get($key)->comment) }} comment(s)
         </div>
       </div>
     </div>

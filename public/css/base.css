@@ -194,6 +194,8 @@ body {
 
 .chat {
   width: 100%;
+	display: block;
+	clear: both;
 }
 
 .bubble {
@@ -224,6 +226,7 @@ body {
 .me {
   float: left;
   margin: 5px 50% 5px 30px;
+	clear: both;
 }
 
 .me::before {
@@ -234,6 +237,7 @@ body {
 .you {
   float: right;
   margin: 5px 20px 5px 300px;
+	clear: both;
 }
 
 .mar1 {
@@ -293,4 +297,8 @@ body {
 
 .comment-display {
 
+}
+
+hr {
+	margin-bottom: 1rem;
 }

@@ -7,7 +7,7 @@
       <div class="pad">
         Your Friend(s) :=
         <select class="m-user" name="">
-          <option value="this is empty">User's Name</option>
+          <option value="">-- select a name --</option>
         </select>
         <button type="button" name="button" class="btn btn-primary">Load Conversation</button>
       </div>
@@ -15,20 +15,21 @@
 
     <div class="col-md-8 col-md-offset-2">
       <div class="m-display">
-        @for($i = 0 ; $i < 100; ++$i)
+        @foreach($messages as $message)
         <div class="chat">
-          <div class="bubble me">Hello t I'm an expandeable chat box with box shadow. How I'm an expandeable chat box with box shadow. Howhere!</div>
-          <div class="bubble me">Hello there!</div>
-          <div class="bubble me">Hello there!</div>
-          <div class="bubble you">Hi. I'm an expandeable chat box with box shadow. How are you? I expand horizontally and vertically, as you can see here.</div>
-          <div class="bubble you">Hi. I'm an expandeable chat box with box shadow. How are you? I expand horizontally and vertically, as you can see here.</div>
-
+          @if($message->sent_by == auth()->user()->id)
+          <div class="bubble me">{{ $message->message_text }}</div>
+          @else
+          <div class="bubble you">{{ $message->message_text }}</div>
+          @endif
         </div>
-        @endfor
+        @endforeach
       </div>
       <div class="m-write pad mshadow">
-        <form class="m-form"method="post">
-          <input type="text" name="m-text" value="" placeholder="Enter message.">
+        <form id="message" class="m-form" method="post">
+          <input type="text" name="message" value="" class="message" placeholder="Enter message.">
+          <input type="hidden" name="to" value="">
+          {{ csrf_field() }}
           <input type="submit" name="send" value="SEND" />
         </form>
       </div>

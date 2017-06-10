@@ -21,8 +21,8 @@
     </div>
     <div class="panel-footer">
       <p>
-        <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{ $post->id }} like(s) &nbsp;&middot;&nbsp;
-        <i class="fa fa-comment" aria-hidden="true"></i> {{ $post->id }} comment(s)
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{ count($post->like) }} like(s) &nbsp;&middot;&nbsp;
+        <i class="fa fa-comment" aria-hidden="true"></i> {{ count($post->comment) }} comment(s)
       </p>
       <div class="post-comment">
         <textarea name="text" class="form-control nbr comment-text" rows="5" cols="10" placeholder="Type your comment here.">
@@ -33,15 +33,15 @@
   </div>
 
   @foreach($post->comment as $key => $value)
-  <div class="comment-display pad1">
+    <div class="comment-display pad1">
         <?php
          // fetch user's detail
          $vvv = DB::table('users')->where('id','=',$value->user_id)->get();
         ?>
         <u><a href="/user/{{$vvv[0]->id}}">{{ ($vvv[0]->name) }}</a></u> &nbsp;&nbsp;&nbsp;&nbsp; on {{ date('M d, Y', strtotime($vvv[0]->created_at)) }}
         <p>{{ ($value->text) }}</p>
-        </div>
-        <hr>
+    </div>
+    <hr>
   @endforeach
 
 </div>

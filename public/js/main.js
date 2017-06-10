@@ -73,7 +73,7 @@ function newComment() {
   		contentType: false,
   		processData: false,
       success: function(data) {
-        alert(data);
+        location.reload();
       },
       error: function (data) {
         alert('failure');
@@ -82,20 +82,41 @@ function newComment() {
   });
 }
 
-// hovering on like and comment buttons
-// function actionHover() {
-//   $('i.fa').on({
-//     mouseenter: function () {
-//       $(this).css('background-color','red');
-//     },
-//     mouseleave: function () {
-//       $(this).css('background-color','transparent');
-//     },
-//     click: function() {
-//       alert($(this).attr('class'));
-//     }
-//   });
-// }
+var mh = 0;
+
+function appendMessage(text) {
+  $('.me').removeClass('new');
+  var elem = $('.chat').first().prepend('<div calss="chat"><div class="bubble me new">'+text+'</div></div>');
+  $('.new').hide();
+  $('.chat').find('.new').show(100);
+}
+
+// sending message through ajax
+function newMessage(){
+  $(document).on('submit', 'form#message', function(event){
+    event.preventDefault();
+    if($('#message .message').val() === '')
+      return;
+    var objForm = $('#message')[0];
+  	var formData = new FormData(objForm);
+
+  	// actual ajax implementation
+  	$.ajax({
+  		type: 'post',
+  		url: 'user/message',
+  		data: formData,
+  		contentType: false,
+  		processData: false,
+  		success: function(data) {
+          $('#message .message').val('');
+  		    appendMessage(data)
+  		},
+  		error: function(data) {
+  			alert(data);
+  		}
+  	});
+  });
+}
 
 function init() {
   $('.alert').hide();
@@ -104,6 +125,7 @@ function init() {
   newPost();
   newLike();
   newComment();
+  newMessage();
 }
 
 $(document).ready(function() {

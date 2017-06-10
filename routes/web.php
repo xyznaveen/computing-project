@@ -26,12 +26,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'User\ProfileController@loadProfile')->name('profile');
 
 Route::post('user/post', ['uses' => 'User\PostController@newPost']);
+Route::post('user/message', ['uses' => 'User\MessageController@newMessage']);
 
 Route::get('/test', ['uses' => 'User\ProfileController@test']);
 
 Route::get('/message', [
   'as' => 'message',
-  'uses' => 'MessageController@index'
+  'uses' => 'User\MessageController@index'
 ]);
 
 Route::get('/user/{id}', [
