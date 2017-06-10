@@ -10,7 +10,7 @@ class PostController extends Controller
 
     public function index($userid,$postid){
 
-      $post = \App\Post::with('user', 'like')
+      $post = \App\Post::with('user', 'like', 'comment')
                          ->find($postid);
 
       return view('user.post', ['post' => $post]);

@@ -25,22 +25,29 @@
         <i class="fa fa-comment" aria-hidden="true"></i> {{ $post->id }} comment(s)
       </p>
       <div class="post-comment">
-        <textarea name="name" class="form-control nbr" rows="1" cols="10" placeholder="Type your comment here.">
+        <textarea name="text" class="form-control nbr comment-text" rows="5" cols="10" placeholder="Type your comment here.">
         </textarea>
-      </div>
-      <div class="comment-display">
-        <div class="panel panel-default">
-          <div class="panel-body nbr">
-            adadjkjashdkj
-          </div>
-        </div>
+        <button type="button" name="button" class="col-md-offset-11 nbr btn btn-default mar1 post_comment">post</button>
       </div>
     </div>
   </div>
+
+  @foreach($post->comment as $key => $value)
+  <div class="comment-display pad1">
+        <?php
+         // fetch user's detail
+         $vvv = DB::table('users')->where('id','=',$value->user_id)->get();
+        ?>
+        <u><a href="/user/{{$vvv[0]->id}}">{{ ($vvv[0]->name) }}</a></u> &nbsp;&nbsp;&nbsp;&nbsp; on {{ date('M d, Y', strtotime($vvv[0]->created_at)) }}
+        <p>{{ ($value->text) }}</p>
+        </div>
+        <hr>
+  @endforeach
+
 </div>
 
 <script type="text/javascript">
-  document.title = "{{ $post->user->name }} | {{ $post->text }}";
+  document.title = "{{ $post->text }}";
 </script>
 
 @endsection

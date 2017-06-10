@@ -285,6 +285,12 @@ body {
 
 }
 
+.post-comment textarea {
+	width: 100%;
+	display: inline-block;
+	resize: none;
+}
+
 .comment-display {
 
 }

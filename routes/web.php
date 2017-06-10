@@ -41,5 +41,6 @@ Route::get('/user/{id}', [
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/{csrft}/{user}/{post}', ['uses' => 'LikeController@newLike']);
+Route::get('/do/comment/{postid}/{comment}', ['uses' => 'User\CommentController@newComment']);
 
 Route::get('/user/{userid}/post/{postid}', ['uses' => 'User\PostController@index']);
