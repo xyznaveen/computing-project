@@ -32,7 +32,7 @@
 
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default nbr">
-        <div class="panel-body">
+        <div class="panel-body nbr">
           <a href="/user/{{ $value->user->id }}" class="bold">{{ $value->user->name  }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
           <hr>

@@ -134,6 +134,12 @@ body {
 	width: 128px;
 	background-color: #007177;
 	display: inline-block;
+	border-radius: 100%;
+	box-shadow: 0 0 5px #000000;
+}
+
+.btn-shadow {
+	box-shadow: 1px 1px 5px #007177;
 }
 
 .profile-details {
@@ -230,6 +236,20 @@ body {
   margin: 5px 20px 5px 300px;
 }
 
+.mar1 {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.pad1 {
+	padding: 1rem;
+}
+
+.shadow {
+	border: 1px solid #a5a5a5;
+	box-shadow: 0 -3px 2px #007177;
+}
+
 .you::before {
   box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4);
   right: -9px;
@@ -262,7 +282,7 @@ body {
 }
 
 .post-comment {
-	
+
 }
 
 .comment-display {

@@ -4,16 +4,16 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2 shadow pad1">
       <div class="profile-picture">
 
       </div>
       <div class="profile-details">
-        <p>{{ auth()->user()->name }}</p>
+        <h1>{{ auth()->user()->name }}</h1>
         <p>{{ auth()->user()->email }}</p>
 
         <p>Joined on - {{ date('F d, Y', strtotime(auth()->user()->created_at)) }}</p>
-        <p>Users known - 0</p>
+        <p>Friend(s) - 0</p>
       </div><!--
       --><div class="profile-details">
         <p>Total posts - {{ DB::table('posts')->where('user_id', auth()->user()->id)->count() }}</p>
@@ -24,7 +24,7 @@
 
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <u><h2>User's post(s)</h2></u>
+      <center><h2>User's Post(s)</h2></center>
     </div>
     @if( count($collection) == 0 )
     <div class="col-md-8 col-md-offset-2">
@@ -56,29 +56,38 @@
 @endsection
 @else
 @section('content')
+@if($collection->id == auth()->user()->id)
+<script>window.location = "http://127.0.0.1:8000/profile"</script>
+@endif
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-2 shadow pad1">
       <div class="profile-picture">
 
       </div>
       <div class="profile-details">
-        <p>{{ $collection->name }}</p>
+        <h1>{{ $collection->name }}</h1>
         <p>{{ $collection->email }}</p>
 
         <p>Joined on - {{ date('F d, Y', strtotime($collection->created_at)) }}</p>
-        <p>Users known - 0</p>
+        <p>Friend(s) - 0</p>
       </div><!--
       --><div class="profile-details">
         <p>Total posts - {{ DB::table('posts')->where('user_id', $collection->id)->count() }}</p>
         <p>Total photos - 0</p>
       </div>
+      <div class="col-md-8 col-md-offset-2 mar1">
+        <button type="button" class="btn btn-primary nbr btn-shadow" name="button">add friend</button>
+        <button type="button" class="btn btn-primary nbr btn-shadow" name="button">report this user</button>
+      </div>
     </div>
   </div>
+  <div class="row">
 
+  </div>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <u><h2>User's post(s)</h2></u>
+      <center><h2>User's Post(s)</h2></center>
     </div>
     @if( count($collection) == 0 )
     <div class="col-md-8 col-md-offset-2">
