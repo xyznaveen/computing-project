@@ -23,6 +23,7 @@ Route::get('/register', function() { return view('register'); })->name('register
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/notification', 'NotificationController@index')->name('home');
 Route::get('/profile', 'User\ProfileController@loadProfile')->name('profile');
 
 Route::post('user/post', ['uses' => 'User\PostController@newPost']);
