@@ -118,6 +118,26 @@ function newMessage(){
   });
 }
 
+function loadConversation() {
+  $('.load-convo').on('click', function() {
+    var r = $('.m-user').val();
+    var s = $('._sender').val();
+    $.ajax({
+      type: 'get',
+      url: '/get/message/'+s+'/'+r,
+      data: 'randomvalue',
+      contentType: false,
+  		processData: false,
+      success: function(data) {
+          alert(data);
+  		},
+  		error: function(data) {
+  			console.log(data);
+  		}
+    });
+  });
+}
+
 function init() {
   $('.alert').hide();
   $('.alert').hide();
@@ -126,6 +146,7 @@ function init() {
   newLike();
   newComment();
   newMessage();
+  loadConversation();
 }
 
 $(document).ready(function() {

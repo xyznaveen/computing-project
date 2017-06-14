@@ -28,4 +28,14 @@ class MessageController extends Controller
       return $message->message_text;
 
     }
+
+    public function getMessages($s,$r) {
+      $messages = \App\Message::with('receivedBy')
+                  ->where('sent_by','=',$s)
+                  ->orWhere('received_by','=',$r)
+                  ->orderBy('created_at','desc')
+                  ->get();
+     dd($messages);
+      return count($messages);
+    }
 }

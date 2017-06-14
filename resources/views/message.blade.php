@@ -5,11 +5,17 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="pad">
-        Your Friend(s) :=
+        Chat With : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <?php
+          $users = DB::table('users')->get();
+         ?>
         <select class="m-user" name="">
-          <option value="">-- select a name --</option>
+          @foreach($users as $user)
+          <option value="{{ $user->id }}">{{ $user->name }}</option>
+          @endforeach
         </select>
-        <button type="button" name="button" class="btn btn-primary">Load Conversation</button>
+        <input type="hidden" name="sender" class="_sender" value="{{ auth()->user()->id }}">
+        <button type="button" name="button" class="nbr btn btn-primary load-convo">Load Conversation</button>
       </div>
     </div>
 
@@ -25,7 +31,7 @@
         </div>
         @endforeach
       </div>
-      <div class="m-write pad mshadow">
+      <div class="m-write">
         <form id="message" class="m-form" method="post">
           <input type="text" name="message" value="" class="message" placeholder="Enter message.">
           <input type="hidden" name="to" value="">

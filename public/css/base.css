@@ -168,10 +168,15 @@ body {
 .m-display {
 	max-height: 350px;
 	width: 100%;
-	box-shadow: 0 0 5px #007177;
+	box-shadow: 0 1px 3px #a1a2a3;
+	border: 1px solid #a5a5a5;
 	overflow-y: auto;
 	margin-top: 3rem;
 	padding: 1rem;
+}
+
+.m-display:hover {
+
 }
 
 .m-write {
@@ -261,7 +266,7 @@ body {
 
 
 .mshadow {
-	box-shadow: 0 0 5px #007177;
+	box-shadow: 0 2px 5px #007177;
 }
 
 .pad {

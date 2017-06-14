@@ -46,3 +46,4 @@ Route::get('/{csrft}/{user}/{post}', ['uses' => 'LikeController@newLike']);
 Route::get('/do/comment/{postid}/{comment}', ['uses' => 'User\CommentController@newComment']);
 
 Route::get('/user/{userid}/post/{postid}', ['uses' => 'User\PostController@index']);
+Route::get('/get/message/{s}/{r}', ['uses'=>'User\MessageController@getMessages']);
