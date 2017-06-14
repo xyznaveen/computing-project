@@ -21,11 +21,11 @@ class MessageController extends Controller
     public  function newMessage(Request $request) {
       $message = new \App\Message();
       $message->sent_by = auth()->user()->id;
-      $message->received_by = $request;
+      $message->received_by = $request->to;
       $message->message_text = $request->input('message');
       $message->save();
 
-      return $request->to;
+      return $message->message_text;
 
     }
 

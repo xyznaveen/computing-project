@@ -99,7 +99,7 @@ function newMessage(){
       return;
     var objForm = $('#message')[0];
   	var formData = new FormData(objForm);
-
+    formData.append('to',$('.m-user').val());
   	// actual ajax implementation
   	$.ajax({
   		type: 'post',
