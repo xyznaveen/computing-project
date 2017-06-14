@@ -10,32 +10,33 @@ class MessageController extends Controller
 
     public function index() {
 
-      $messages = \App\Message::with('receivedBy')
-                  ->where('sent_by','=',3)
-                  ->orWhere('received_by','=',3)
-                  ->orderBy('created_at','desc')
-                  ->get();
-      return view('message', ['messages'=>$messages]);
+      // $messages = \App\Message::with('receivedBy')
+      //             ->where('sent_by','=',auth()->user()->id)
+      //             ->orWhere('received_by','=',3)
+      //             ->orderBy('created_at','desc')
+      //             ->get();
+      return view('message');
     }
 
     public  function newMessage(Request $request) {
       $message = new \App\Message();
       $message->sent_by = auth()->user()->id;
-      $message->received_by = 2;
+      $message->received_by = $request;
       $message->message_text = $request->input('message');
       $message->save();
 
-      return $message->message_text;
+      return $request->to;
 
     }
 
     public function getMessages($s,$r) {
       $messages = \App\Message::with('receivedBy')
                   ->where('sent_by','=',$s)
-                  ->orWhere('received_by','=',$r)
+                  ->where('received_by','=',$r)
+                  ->orWhere('sent_by','=',$r)
+                  ->where('received_by','=',$s)
                   ->orderBy('created_at','desc')
                   ->get();
-     dd($messages);
-      return count($messages);
+      return json_encode($messages);
     }
 }

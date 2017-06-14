@@ -118,6 +118,16 @@ function newMessage(){
   });
 }
 
+function pj(val) {
+      var by = $('.sentby').val();
+      if(val.sent_by == by) {
+        $('.chat').append('<div class="bubble me">' + val.message_text + '<br/><small>sent on : '+val.created_at+'</small></div>');
+      } else {
+        $('.chat').append('<div class="bubble you">' + val.message_text + '<br/><small>sent on : '+val.created_at+'</small></div>');
+      }
+      console.log(val);
+}
+
 function loadConversation() {
   $('.load-convo').on('click', function() {
     var r = $('.m-user').val();
@@ -129,7 +139,13 @@ function loadConversation() {
       contentType: false,
   		processData: false,
       success: function(data) {
-          alert(data);
+        $('.chat').html('');
+        var msgObj = JSON.parse(data);
+        if(msgObj.length === 0){
+          $('.pad').prepend('<div class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>You have not started conversation with this person.</div>');
+        } else {
+          msgObj.forEach(pj);
+        }
   		},
   		error: function(data) {
   			console.log(data);
