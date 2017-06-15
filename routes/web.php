@@ -51,3 +51,7 @@ Route::get('/get/message/{s}/{r}', ['uses'=>'User\MessageController@getMessages'
 // sending friend request
 
 Route::get('/user/send/friend/request/to/{id}', ['uses' => 'User\FriendRequestController@sendRequest']);
+
+
+// discover friends
+Route::get('/discover', ['uses' => 'User\FriendController@index']);

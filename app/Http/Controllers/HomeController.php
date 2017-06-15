@@ -35,8 +35,9 @@ class HomeController extends Controller
         $collection = $post->with('user','like','comment')
                             ->join('friends', function($q){
                               $q->on('user_id','friends.user_two')
-                                ->where('friends.user_one','=',auth()->user()->id);
-                            })->get();
+                                ->where('friends.user_one','=',auth()->user()->id)
+                                ->orWhere('user_id','=',auth()->user()->id);
+                            })->orderBy('friends.created_at','desc')->get();
 
         return view('home', ['collection'=>$collection]);
     }

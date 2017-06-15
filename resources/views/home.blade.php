@@ -32,7 +32,7 @@
       <div class="col-md-8 col-md-offset-2">
           <center><h3>You do not have anyone in your circle.</h3></center>
           <center><h5>Please add some friends first.</h5></center>
-          <center><a href="/">See list of active people on PSN</a></center>
+          <center><a href="/discover">See list of active people on PSN</a></center>
         </div>
     @else
 

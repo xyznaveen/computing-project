@@ -9,6 +9,19 @@
 * {
 	padding: 0;
 	margin: 0;
+	font-family: 'Consolas', 'Verdana', 'Open Sans';
+}
+
+.fimg {
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	border: 1px solid #000000;
+	vertical-align: middle;
+}
+
+.nopad {
+	padding: 0;
 }
 
 body {
@@ -279,7 +292,7 @@ small {
 
 .bold {
 	font-weight: bolder;
-	font-size: 150%;
+	font-size: 130%;
 }
 
 .nbr {
