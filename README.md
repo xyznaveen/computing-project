@@ -1,6 +1,7 @@
 # Setting up this project
 
 Instructions
+# First install laravel please follow the Instructions on http://laravel.com #
 
 1.  create .env file in your home folder if there isn't already or rename .env.exampe to .env
 2.  open .env file and enter your database details i.e. host, username and password
