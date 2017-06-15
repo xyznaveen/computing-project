@@ -154,6 +154,27 @@ function loadConversation() {
   });
 }
 
+function newFriend() {
+
+  $('.add_friend').on('click', function() {
+    var purl = '/user/send/friend/request/to/'+$('.profile_user_id').val();
+    var pdata = 'randomvalue=garbage';
+    $.ajax({
+      type: 'get',
+      url: purl,
+      data: pdata,
+      contentType: false,
+      processData: false,
+      success: function(data) {
+        alert(data);
+      },
+      error: function (data) {
+        alert('failure');
+      }
+    });
+  });
+}
+
 function init() {
   $('.alert').hide();
   $('.alert').hide();
@@ -163,6 +184,7 @@ function init() {
   newComment();
   newMessage();
   loadConversation();
+  newFriend();
 }
 
 $(document).ready(function() {

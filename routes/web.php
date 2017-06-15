@@ -47,3 +47,7 @@ Route::get('/do/comment/{postid}/{comment}', ['uses' => 'User\CommentController@
 
 Route::get('/user/{userid}/post/{postid}', ['uses' => 'User\PostController@index']);
 Route::get('/get/message/{s}/{r}', ['uses'=>'User\MessageController@getMessages']);
+
+// sending friend request
+
+Route::get('/user/send/friend/request/to/{id}', ['uses' => 'User\FriendRequestController@sendRequest']);

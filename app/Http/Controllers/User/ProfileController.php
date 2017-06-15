@@ -12,7 +12,7 @@ class ProfileController extends Controller
 
       $userId = auth()->user()->id;
       $post = new \App\Post();
-      $collection = $post->with('like')->where('user_id','=',$userId)->orderBy('created_at','desc')->paginate(8);
+      $collection = $post->with('like','comment')->where('user_id','=',$userId)->orderBy('created_at','desc')->paginate(8);
 
       return view('user.profile', ['collection'=>$collection]);
     }

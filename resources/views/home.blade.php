@@ -29,8 +29,10 @@
       </div>
     </div>
     @if(count($collection) == 0)
-      <div class="col-md-8 col-md-2">
-          <center><h1>There is nothing here to show.</h1></center>
+      <div class="col-md-8 col-md-offset-2">
+          <center><h3>You do not have anyone in your circle.</h3></center>
+          <center><h5>Please add some friends first.</h5></center>
+          <center><a href="/">See list of active people on PSN</a></center>
         </div>
     @else
 
@@ -59,12 +61,12 @@
       </div>
     </div>
     @endforeach
+    @endif
 
     <div class="col-md-8 col-md-offset-2">
-      {{ $collection }}
     </div>
 
   </div>
 </div>
-@endif
+
 @endsection

@@ -39,10 +39,17 @@
           <a href="/user/{{auth()->user()->id}}" class="bold">{{auth()->user()->name}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
           <hr>
-          {{ $value->text }}
+          <p>{{ $value->text }}</p>
+          <p class="pst">
+            <input type="hidden" class="p_token" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" class="p_userid" name="_userid" value="{{ auth()->user()->id }}" />
+            <input type="hidden" class="p_postid" name="_postid" value="{{ $value->id }}" />
+            <a class="post_like">Like</a> &middot;
+            <a class="a" href="/user/{{ $value->user->id }}/post/{{ $value->id }}">Comment</a>
+          </p>
         </div>
         <div class="panel-footer">
-          {{ $value->id }}
+          {{ count($value->like) }} like(s) &middot; {{ count($value->comment) }} comment(s)
         </div>
       </div>
     </div>
@@ -68,6 +75,7 @@
       <div class="profile-details">
         <h1>{{ $collection->name }}</h1>
         <p>{{ $collection->email }}</p>
+        <input type="hidden" name="to" class="profile_user_id" value="{{$collection->id}}">
 
         <p>Joined on - {{ date('F d, Y', strtotime($collection->created_at)) }}</p>
         <p>Friend(s) - 0</p>
@@ -77,7 +85,7 @@
         <p>Total photos - 0</p>
       </div>
       <div class="col-md-8 col-md-offset-2 mar1">
-        <button type="button" class="btn btn-primary nbr btn-shadow" name="button">add friend</button>
+        <button type="button" class="btn btn-primary nbr btn-shadow add_friend" name="button">add friend</button>
         <button type="button" class="btn btn-primary nbr btn-shadow" name="button">report this user</button>
       </div>
     </div>
@@ -110,7 +118,14 @@
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
           <hr>
           {{-- display the user's post's text --}}
-          {{ $value->text }}
+          <p>{{ $value->text }}</p>
+          <p class="pst">
+            <input type="hidden" class="p_token" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" class="p_userid" name="_userid" value="{{ auth()->user()->id }}" />
+            <input type="hidden" class="p_postid" name="_postid" value="{{ $collection->id }}" />
+            <a class="post_like">Like</a> &middot;
+            <a class="a" href="/user/{{ $collection->id }}/post/{{ $value->id }}">Comment</a>
+          </p>
         </div>
         <div class="panel-footer">
           {{-- extract each like from the collection, retrived using eager loading --}}
@@ -126,7 +141,7 @@
             @endif
           @endforeach
 
-          {{ $likes }} like(s) &middot;
+          {{ count($collection->like) }} like(s) &middot; {{ count($collection->comment) }} comment(s)
         </div>
       </div>
     </div>

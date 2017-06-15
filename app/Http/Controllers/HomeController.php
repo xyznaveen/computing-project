@@ -26,10 +26,17 @@ class HomeController extends Controller
         $post = new \App\Post();
 
         // selecting post from all user except from this user
-        $collection = $post->with('user', 'like', 'comment')
-                      ->where('user_id','<>',auth()->user()->id)
-                      ->orderBy('created_at', 'desc')
-                      ->paginate(12);
+        // $collection = $post->with('user', 'like', 'comment')
+        //               ->where('user_id','=','friends.user_two')
+        //               ->where('f.user_one','=',auth()->user()->id)
+        //               ->orderBy('created_at', 'desc')
+        //               ->paginate(8);
+
+        $collection = $post->with('user','like','comment')
+                            ->join('friends', function($q){
+                              $q->on('user_id','friends.user_two')
+                                ->where('friends.user_one','=',auth()->user()->id);
+                            })->get();
 
         return view('home', ['collection'=>$collection]);
     }
