@@ -13,12 +13,13 @@ class UsersController extends Controller
     	return view('admin.users', compact('users'));
     }
 
-    public function remove($id) {
+    public function remove($a,$b,$c,$d,$e,$f,$id) {
 
     	$user = \App\User::find($id);
-    	
+
     	$user->delete();
 
+    	return redirect()->route('ausers');
     }
 
 }

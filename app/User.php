@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'profile_id' , 'password',
+        'name', 'email' , 'password',
     ];
 
     /**
@@ -49,6 +49,11 @@ class User extends Authenticatable
 
     public function profile() {
       return $this->hasOne('App\Profile');
+    }
+
+    public function role() {
+        // modelname, pivot table name, current model id, foreign key (columns to be linked in pivot table)
+        return $this->belongsToMany('App\Role', 'role_user', 'user_id','role_id')->withTimestamps();;
     }
 
 }

@@ -2,6 +2,7 @@
 
 @section('content')
 
+{{  session()->has('key') }}
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2 alert alert-success">
@@ -34,13 +35,13 @@
           <center>Get conected <a href="/discover">See list of active people on PSN</a></center>
         </div>
     @else
-
+    
     @foreach($collection as $key => $value)
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default nbr">
         <div class="panel-body nbr">
           <div class="fimg">
-
+  
           </div>
           <a href="/user/{{ $value->user->id }}" class="bold">{{ $value->user->name  }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>

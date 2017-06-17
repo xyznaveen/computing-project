@@ -5,7 +5,7 @@
 <div class="col-md-8 col-md-offset-2">
 	<div class="panel panel-default nbr">
 		<div class="panel-heading">
-			Summary
+			<center><h1>System Summary</h1></center>
 		</div>
 		<div class="panel-body">
 			<div class="d-block">
