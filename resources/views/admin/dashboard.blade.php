@@ -3,7 +3,7 @@
 @section('content')
 @include('admin.partials.nav')
 <div class="col-md-8 col-md-offset-2">
-	<div class="panel panel-default nbr">
+	<div class="panel panel-default nbr mar1">
 		<div class="panel-heading">
 			<center><h1>System Summary</h1></center>
 		</div>

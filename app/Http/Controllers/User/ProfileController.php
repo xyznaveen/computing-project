@@ -9,12 +9,17 @@ class ProfileController extends Controller
 {
 
     public function loadProfile() {
-
       $userId = auth()->user()->id;
+
+      $profile = new \App\Profile();
+      $profile = $profile->where('user_id','=',$userId)->get();
+
+      $profile = $profile->get(0);
+
       $post = new \App\Post();
       $collection = $post->with('like','comment')->where('user_id','=',$userId)->orderBy('created_at','desc')->paginate(8);
 
-      return view('user.profile', ['collection'=>$collection]);
+      return view('user.profile', compact('collection', 'profile'));
     }
 
     public function test() {

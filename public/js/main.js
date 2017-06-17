@@ -112,7 +112,7 @@ function newMessage(){
   		    appendMessage(data)
   		},
   		error: function(data) {
-  			alert(data);
+  			$('.pad').prepend('<div class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Sorry there is no one to receive your text.</div>');
   		}
   	});
   });
@@ -127,7 +127,10 @@ function pj(val) {
       }
 }
 
+var interval;
+
 function loadConversation() {
+  $('.chat').html('<center>There are no messages.</center>');
   $('.load-convo').on('click', function() {
     var r = $('.m-user').val();
     var s = $('._sender').val();
@@ -141,7 +144,7 @@ function loadConversation() {
         $('.chat').html('');
         var msgObj = JSON.parse(data);
         if(msgObj.length === 0){
-          $('.pad').prepend('<div class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>You have not started conversation with this person.</div>');
+          clearInterval(interval);
         } else {
           msgObj.forEach(pj);
         }
@@ -186,7 +189,7 @@ function init() {
   newMessage();
   loadConversation();
   newFriend();
-  setInterval(function(){$('.load-convo').click();}, 5000);
+  interval = setInterval(function(){$('.load-convo').click();}, 5000);
 }
 
 $(document).ready(function() {

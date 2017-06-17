@@ -5,12 +5,14 @@
 {{  session()->has('key') }}
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2 alert alert-success">
-      <strong>Success!</strong> Your post was submitted successfully.
+    <div class="col-md-8 col-md-offset-2 alert alert-success alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Error!</strong> Posted your update.
     </div>
 
-    <div class="col-md-8 col-md-offset-2 alert alert-danger nbr">
-      You need to type in some text before you submit.
+    <div class="col-md-8 col-md-offset-2 alert alert-danger alert-dismissable fade in">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Error!</strong> Please type in some text.
     </div>
   </div>
   <div class="row">

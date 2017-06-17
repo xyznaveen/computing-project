@@ -1,12 +1,11 @@
 @extends('layouts.app')
-
 @if(!isset($collection->id))
 @section('content')
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2 shadow pad1">
       <div class="profile-picture">
-
+        <img src="/storage/{{ $profile->profile_image_url }}">
       </div>
       <div class="profile-details">
         <h1>{{ auth()->user()->name }}</h1>
@@ -36,7 +35,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="fimg">
-
+            <img src="/storage/{{ $profile->profile_image_url }}">
           </div>
           <a href="/user/{{auth()->user()->id}}" class="bold">{{auth()->user()->name}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>

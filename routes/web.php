@@ -61,9 +61,12 @@ Route::get('/settings', ['uses' => 'SettingController@index'])->name('setting');
 
 
 // ADMIN SECTION
-Route::get('/admin/dashboard', ['uses'  =>  'Admin\DashBoardController@index'])->name('dboard');
-Route::get('/admin/users', ['uses'  =>  'Admin\UsersController@index'])->name('ausers');
-Route::get('/admin/complains', ['uses'  =>  'ReportController@index'])->name('flag');
+Route::get('/admin/dashboard', ['middleware' => 'auth','uses'  =>  'Admin\DashBoardController@index'])->name('dboard');
+Route::get('/admin/users', ['middleware' => 'auth','uses'  =>  'Admin\UsersController@index'])->name('ausers');
+Route::get('/admin/complains', ['middleware' => 'auth','uses'  =>  'ReportController@index'])->name('flag');
 
 // delte a user
 Route::get('/{please}/{remove}/{me}/{from}/{your}/{system}/{id}', ['uses'	=>	'Admin\UsersController@remove'])->name('remu');
+
+// updating user's info
+Route::post('/update', ['uses'	=>	'UpdateController@update'])->name('proupdate');

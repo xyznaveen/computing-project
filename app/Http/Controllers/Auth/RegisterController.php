@@ -63,10 +63,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'profile_id' => 1,
-            'password' => bcrypt($data['password']),
+            'name'          =>  $data['name'],
+            'email'         =>  $data['email'],
+            'profile_id'    =>  0,
+            'password'      =>  bcrypt($data['password']),
+        ]);
+
+        $profile = \App\Profile::create([
+            'address'           =>  'N/A',
+            'user_id'           =>  $user->id,
+            'phone_number'      =>  'N/A',
+            'profile_url'       =>  'user/'.$user->id,
+            'profile_image_url' =>  'N/A',
+            'is_active'         =>  'true',
         ]);
 
         $user->role()->sync(1);
