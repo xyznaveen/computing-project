@@ -8,14 +8,16 @@
         <img src="/storage/{{ $profile->profile_image_url }}">
       </div>
       <div class="profile-details">
-        <h1>{{ auth()->user()->name }}</h1>
-        <p>{{ auth()->user()->email }}</p>
+        <h1>{{ auth()->user()->name }}</h1><span><p>{{ auth()->user()->email }}</p></span>
+        <p>From - {{ $profile->address }}</p>
+        <p>Phone - {{ $profile->phone_number }}</p>
 
-        <p>Joined on - {{ date('F d, Y', strtotime(auth()->user()->created_at)) }}</p>
-        <p>Friend(s) - 0</p>
+        
       </div><!--
-      --><div class="profile-details">
-        <p>Total posts - {{ DB::table('posts')->where('user_id', auth()->user()->id)->count() }}</p>
+      --><div class="profile-details"><br><br>
+        <p>Joined on - {{ date('F d, Y', strtotime(auth()->user()->created_at)) }}</p>
+        <p>Friend(s) - {{ DB::table('friends')->where('user_one','=',auth()->user()->id)->count() }}</p>
+        <p>Total posts - {{ DB::table('posts')->where('user_id', '=',auth()->user()->id)->count() }}</p>
         <p>Total photos - 0</p>
       </div>
     </div>
