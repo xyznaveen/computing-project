@@ -186,7 +186,7 @@ function init() {
   newMessage();
   loadConversation();
   newFriend();
-  setInterval(function(){$('.load-convo').click();}, 600);
+  setInterval(function(){$('.load-convo').click();}, 5000);
 }
 
 $(document).ready(function() {

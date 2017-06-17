@@ -58,3 +58,9 @@ Route::get('/discover', ['uses' => 'User\FriendController@index']);
 
 // User settings
 Route::get('/settings', ['uses' => 'SettingController@index'])->name('setting');
+
+
+// ADMIN SECTION
+Route::get('/admin/dashboard', ['uses'  =>  'Admin\DashBoardController@index'])->name('dboard');
+Route::get('/admin/users', ['uses'  =>  'Admin\UsersController@index'])->name('ausers');
+Route::get('/admin/complains', ['uses'  =>  'ReportController@index'])->name('flag');

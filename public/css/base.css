@@ -13,11 +13,11 @@
 }
 
 .fimg {
+	border: 1px solid #000000;
 	display: inline-block;
 	height: 32px;
-	width: 32px;
-	border: 1px solid #000000;
 	vertical-align: middle;
+	width: 32px;
 }
 
 .nopad {
@@ -25,10 +25,10 @@
 }
 
 body {
-	font-family: 'Open Sans';
-	background-size: cover;
-	background-repeat: no-repeat;
 	background-color: #5D4037;
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: 'Open Sans';
 }
 
 .a {
@@ -48,20 +48,20 @@ body {
 }
 
 .jumbotron h1 {
+	color: #FFFFFF;
 	font-size: 10rem;
 	font-weight: 900;
-	color: #FFFFFF;
-	text-shadow: 0 0 4px #000000;
 	text-align: center;
+	text-shadow: 0 0 4px #000000;
 }
 
 /* navigation styling */
 .nav {
 	box-sizing: border-box;
-	width: 1px;
-	min-width: 300px;
 	margin-left: auto;
 	margin-right: auto;
+	min-width: 300px;
+	width: 1px;
 }
 
 .nav nav ul li {
@@ -69,20 +69,20 @@ body {
 }
 
 .nav nav ul li a {
-	display: block;
-	text-decoration: none;
-	padding: 1rem;
-	width: 300px;
-	color: #FFFFFF;
-	text-align: center;
-	transition: all 0.2s;
-	margin-bottom: 1rem;
-	height: 6rem;
-	display: flex;
-	justify-content: center;
 	align-items: center;
-	position: relative;
+	color: #FFFFFF;
+	display: block;
+	display: flex;
+	height: 6rem;
+	justify-content: center;
+	margin-bottom: 1rem;
 	overflow: hidden;
+	padding: 1rem;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.2s;
+	width: 300px;
 }
 
 .nav nav ul li a:hover {
@@ -90,14 +90,14 @@ body {
 }
 
 .nav nav ul li a::before {
+	background-color: red;
+	bottom: 0;
 	content: '';
 	height: .1rem;
 	left: 100%;
-	width: 100%;
-	bottom: 0;
 	position: absolute;
-	background-color: red;
 	transition: left .7s;
+	width: 100%;
 }
 
 .nav nav ul li a:hover:before {
@@ -106,14 +106,14 @@ body {
 
 /* logo */
 .logo {
-	width: 600px;
+	background-image: url('../images/logo.png');
+	background-repeat: no-repeat;
+	height: 290px;
+	margin-bottom: 4rem;
 	margin-left: auto;
 	margin-right: auto;
-	height: 290px;
 	margin-top: 4rem;
-	margin-bottom: 4rem;
-	background-repeat: no-repeat;
-	background-image: url('../images/logo.png');
+	width: 600px;
 }
 
 /* navbrand bar */
@@ -143,12 +143,12 @@ body {
 /* this section contains user profile picture styling */
 
 .profile-picture {
-	height: 128px;
-	width: 128px;
 	background-color: #007177;
-	display: inline-block;
 	border-radius: 100%;
 	box-shadow: 0 0 5px #000000;
+	display: inline-block;
+	height: 128px;
+	width: 128px;
 }
 
 .btn-shadow {
@@ -162,10 +162,10 @@ body {
 }
 
 .box {
-	border: 1px solid #007177;
-	padding: 1rem;
-	margin-bottom: 1rem;
 	border-radius: 1rem;
+	border: 1px solid #007177;
+	margin-bottom: 1rem;
+	padding: 1rem;
 }
 
 
@@ -179,14 +179,14 @@ body {
 
 /* message styling */
 .m-display {
+	border: 1px solid #a5a5a5;
+	box-shadow: 0 1px 3px #a1a2a3;
+	margin-top: 3rem;
 	max-height: 350px;
 	min-height: 350px;
-	width: 100%;
-	box-shadow: 0 1px 3px #a1a2a3;
-	border: 1px solid #a5a5a5;
 	overflow-y: auto;
-	margin-top: 3rem;
 	padding: 1rem;
+	width: 100%;
 }
 
 .m-display:hover {
@@ -218,28 +218,28 @@ body {
 }
 
 .bubble {
-  background-color: #F2F2F2;
-  border-radius: 1rem;
-  box-shadow: 0 0 6px #B2B2B2;
-  display: inline-block;
-  padding: 10px 18px;
-  position: relative;
-  vertical-align: top;
+	background-color: #F2F2F2;
+	border-radius: 1rem;
+	box-shadow: 0 0 6px #B2B2B2;
+	display: inline-block;
+	padding: 10px 18px;
+	position: relative;
+	vertical-align: top;
 }
 
 .bubble::before {
-  background-color: #F2F2F2;
-  content: "\00a0";
-  display: block;
-  height: 16px;
-  position: absolute;
-  top: 11px;
-  transform: rotate( 29deg) skew( -35deg);
-  -moz-transform: rotate( 29deg) skew( -35deg);
-  -ms-transform: rotate( 29deg) skew( -35deg);
-  -o-transform: rotate( 29deg) skew( -35deg);
-  -webkit-transform: rotate( 29deg) skew( -35deg);
-  width: 20px;
+	-moz-transform: rotate( 29deg) skew( -35deg);
+	-ms-transform: rotate( 29deg) skew( -35deg);
+	-o-transform: rotate( 29deg) skew( -35deg);
+	-webkit-transform: rotate( 29deg) skew( -35deg);
+	background-color: #F2F2F2;
+	content: "\00a0";
+	display: block;
+	height: 16px;
+	position: absolute;
+	top: 11px;
+	transform: rotate( 29deg) skew( -35deg);
+	width: 20px;
 }
 
 small {
@@ -313,9 +313,9 @@ small {
 }
 
 .post-comment textarea {
-	width: 100%;
 	display: inline-block;
 	resize: none;
+	width: 100%;
 }
 
 .comment-display {
@@ -329,6 +329,27 @@ hr {
 .update-form {
 	display: block;
 	margin-left: auto;
-	width: 800px;
 	margin-right: auto;
+	width: 800px;
+}
+
+.d-block {
+	padding: .5rem;
+}
+
+.d-block span {
+	border: 1px solid transparent;
+	display: inline-block;
+	font-size: 200%;
+	text-align: center;
+	vertical-align: middle;
+	width: 100px;
+}
+
+.d-block span:hover {
+	border: 1px solid #000000;
+	font-size: 210%;
+	font-weight: bolder;
+	transition: all 1s;
+	cursor: pointer;
 }

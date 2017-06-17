@@ -21,7 +21,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-8 col-md-offset-2 mar1">
       <center><h2>User's Post(s)</h2></center>
@@ -140,7 +139,7 @@
           </p>
         </div>
         <div class="panel-footer">
-        
+
         {{-- count number of likes on this post --}}
         <?php $likes = 0;?>
         @foreach($value->like as $like)
