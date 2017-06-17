@@ -64,9 +64,9 @@
                                 <ul class="dropdown-menu" role="menu">
 
                                     <li><a href="/">Dashboard</a></li>
-                                    <li><a href="/notification">Notifications - <span class="new-notification">0</span></a></li>
-                                    <li class="border-above"><a href="/profile">My Profile</a></li>
-                                    <li><a href="#">Settings</a></li>
+                                    <li><a href="{{ route('notification') }}">Notifications - <span class="new-notification">0</span></a></li>
+                                    <li class="border-above"><a href=" {{ route('profile') }} ">My Profile</a></li>
+                                    <li><a href=" {{ route('setting') }} ">Settings</a></li>
                                     <li><a href="/message">My messages</a></li>
                                     <li class="border-above">
                                         <a href="{{ route('logout') }}"

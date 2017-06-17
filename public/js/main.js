@@ -125,7 +125,6 @@ function pj(val) {
       } else {
         $('.chat').append('<div class="bubble you">' + val.message_text + '<br/><small>sent on : '+val.created_at+'</small></div>');
       }
-      console.log(val);
 }
 
 function loadConversation() {
@@ -148,10 +147,10 @@ function loadConversation() {
         }
   		},
   		error: function(data) {
-  			console.log(data);
   		}
     });
   });
+  console.log('yeeee');
 }
 
 function newFriend() {
@@ -167,12 +166,14 @@ function newFriend() {
       processData: false,
       success: function(data) {
         alert(data);
+
       },
       error: function (data) {
         alert('failure');
       }
     });
   });
+
 }
 
 function init() {
@@ -185,6 +186,7 @@ function init() {
   newMessage();
   loadConversation();
   newFriend();
+  setInterval(function(){$('.load-convo').click();}, 600);
 }
 
 $(document).ready(function() {

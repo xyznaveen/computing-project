@@ -19,10 +19,10 @@
 
           <form id="create-post" class="" method="post">
             {{ csrf_field() }}
-            <textarea class="panel-body form-control create-post-area" name="post_text"
+            <textarea class="panel-body form-control create-post-area nbr" name="post_text"
                       value="" placeholder="write something cool . . . ">
             </textarea>
-            <div class="panel-footer">
+            <div class="panel-footer nbr">
               <input type="submit" class="btn btn-default col-md-offset-11" value="Post">
             </div>
           </form>
@@ -30,9 +30,8 @@
     </div>
     @if(count($collection) == 0)
       <div class="col-md-8 col-md-offset-2">
-          <center><h3>You do not have anyone in your circle.</h3></center>
-          <center><h5>Please add some friends first.</h5></center>
-          <center><a href="/discover">See list of active people on PSN</a></center>
+          <center><h3>Dull and boring feed?</h3></center>
+          <center>Get conected <a href="/discover">See list of active people on PSN</a></center>
         </div>
     @else
 
@@ -40,6 +39,9 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default nbr">
         <div class="panel-body nbr">
+          <div class="fimg">
+
+          </div>
           <a href="/user/{{ $value->user->id }}" class="bold">{{ $value->user->name  }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
           <hr>
@@ -54,7 +56,7 @@
             <a class="a" href="/user/{{ $value->user->id }}/post/{{ $value->id }}">Comment</a>
           </p>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer nbr">
           <i class="fa fa-thumbs-up" aria-hidden="true"></i> <span class="like_count">{{ count($collection->get($key)->like) }}</span> like(s) &nbsp;&middot;&nbsp;
           <i class="fa fa-comment" aria-hidden="true"></i> {{ count($collection->get($key)->comment) }} comment(s)
         </div>
@@ -64,6 +66,7 @@
     @endif
 
     <div class="col-md-8 col-md-offset-2">
+      {{ $collection->links() }}
     </div>
 
   </div>

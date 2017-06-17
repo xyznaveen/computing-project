@@ -180,6 +180,7 @@ body {
 /* message styling */
 .m-display {
 	max-height: 350px;
+	min-height: 350px;
 	width: 100%;
 	box-shadow: 0 1px 3px #a1a2a3;
 	border: 1px solid #a5a5a5;
@@ -323,4 +324,11 @@ small {
 
 hr {
 	margin-bottom: 1rem;
+}
+/*	update form 	*/
+.update-form {
+	display: block;
+	margin-left: auto;
+	width: 800px;
+	margin-right: auto;
 }

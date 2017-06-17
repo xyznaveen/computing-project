@@ -16,6 +16,7 @@
 
                 </div>
                 <a href="/user/{{ $user->id }}" class="bold">{{ $user->name  }}</a>
+                since : {{ date('F d, Y', strtotime($user->created_at)) }}
                 <input type="hidden" name="to" class="profile_user_id" value="{{$user->id}}">
               </div>
               <div class="col-md-2">

@@ -36,6 +36,9 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
+          <div class="fimg">
+
+          </div>
           <a href="/user/{{auth()->user()->id}}" class="bold">{{auth()->user()->name}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
           <hr>
@@ -48,8 +51,23 @@
             <a class="a" href="/user/{{ $value->user->id }}/post/{{ $value->id }}">Comment</a>
           </p>
         </div>
+        {{-- count number of likes on this post --}}
+        <?php $likes = 0;?>
+        @foreach($value->like as $like)
+          @if( $like->post_id == $value->id )
+            <?php $likes++; ?>
+          @endif
+        @endforeach
+
+        {{-- count number of comment on this post --}}
+        <?php $ccount = 0; ?>
+        @foreach($value->comment as $comment)
+          @if( $comment->post_id == $value->id )
+            <?php ++$ccount; ?>
+          @endif
+        @endforeach
         <div class="panel-footer">
-          {{ count($value->like) }} like(s) &middot; {{ count($value->comment) }} comment(s)
+          {{ $likes }} like(s) &middot; {{ $ccount }} comment(s)
         </div>
       </div>
     </div>
@@ -58,7 +76,6 @@
       {{ $collection->links() }}
     </div>
   </div>
-
 </div>
 @endsection
 @else
@@ -104,13 +121,8 @@
     </div>
     @endif
     {{-- prepare like counter -- }}
-
-
     {{-- extract each post from the collection --}}
     @foreach($collection->post as $key => $value)
-    <?php
-      $likes = 0;
-    ?>
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
@@ -128,20 +140,24 @@
           </p>
         </div>
         <div class="panel-footer">
-          {{-- extract each like from the collection, retrived using eager loading --}}
-          @foreach($collection->like as $like)
-            {{-- check if the like belongs to the post --}}
-            @if($value->id == $collection->like->get(0)->post_id)
+        
+        {{-- count number of likes on this post --}}
+        <?php $likes = 0;?>
+        @foreach($value->like as $like)
+          @if( $like->post_id == $value->id )
+            <?php $likes++; ?>
+          @endif
+        @endforeach
 
-              <?php
-               // increment the counter by 1
-               $likes++;
-              ?>
+        {{-- count number of comment on this post --}}
+        <?php $ccount = 0; ?>
+        @foreach($value->comment as $comment)
+          @if( $comment->post_id == $value->id )
+            <?php ++$ccount; ?>
+          @endif
+        @endforeach
 
-            @endif
-          @endforeach
-
-          {{ count($collection->like) }} like(s) &middot; {{ count($collection->comment) }} comment(s)
+        {{ $likes }} like(s) &middot; {{ $ccount }}  comment(s)
         </div>
       </div>
     </div>
@@ -150,7 +166,6 @@
     <div class="col-md-8 col-md-offset-2">
     </div>
   </div>
-
 </div>
 @endsection
 @endif

@@ -32,13 +32,8 @@ class HomeController extends Controller
         //               ->orderBy('created_at', 'desc')
         //               ->paginate(8);
 
-        $collection = $post->with('user','like','comment')
-                            ->join('friends', function($q){
-                              $q->on('user_id','friends.user_two')
-                                ->where('friends.user_one','=',auth()->user()->id)
-                                ->orWhere('user_id','=',auth()->user()->id);
-                            })->orderBy('friends.created_at','desc')->get();
-
+        $collection = $post->with(['user'  ,'like','comment'])
+                            ->paginate(8);
         return view('home', ['collection'=>$collection]);
     }
 

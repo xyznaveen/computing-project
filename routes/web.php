@@ -23,7 +23,7 @@ Route::get('/register', function() { return view('register'); })->name('register
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/notification', 'NotificationController@index')->name('home');
+Route::get('/notification', 'NotificationController@index')->name('notification');
 Route::get('/profile', 'User\ProfileController@loadProfile')->name('profile');
 
 Route::post('user/post', ['uses' => 'User\PostController@newPost']);
@@ -55,3 +55,6 @@ Route::get('/user/send/friend/request/to/{id}', ['uses' => 'User\FriendRequestCo
 
 // discover friends
 Route::get('/discover', ['uses' => 'User\FriendController@index']);
+
+// User settings
+Route::get('/settings', ['uses' => 'SettingController@index'])->name('setting');
