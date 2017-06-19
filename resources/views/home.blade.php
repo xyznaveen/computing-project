@@ -16,7 +16,7 @@
   <div class="row">
 
     <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default create-post nbr">
+      <div class="panel panel-default create-post nbr home-post">
 
           <form id="create-post" class="" method="post">
             {{ csrf_field() }}
@@ -38,7 +38,7 @@
     
     @foreach($collection as $key => $value)
     <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default nbr">
+      <div class="panel panel-default nbr home-post">
         <div class="panel-body nbr">
            <?php 
            $immg = DB::table('profiles')

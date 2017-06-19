@@ -169,10 +169,9 @@ function newFriend() {
       processData: false,
       success: function(data) {
         alert(data);
-
       },
       error: function (data) {
-        alert('failure');
+        alert('there was an error processing this request.');
       }
     });
   });

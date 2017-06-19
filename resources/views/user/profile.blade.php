@@ -34,10 +34,17 @@
     @endif
     @foreach($collection as $key => $value)
     <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
+      <div class="panel panel-default home-post">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-1 col-md-offset-11"><i class="fa fa-trash-o remove-post"></i></div>
+          </div>
+        </div>
         <div class="panel-body">
           <div class="fimg">
+            @if( !$profile->profile_image_url == 'N/A' )
             <img src="/storage/{{ $profile->profile_image_url }}">
+            @endif
           </div>
           <a href="/user/{{auth()->user()->id}}" class="bold">{{auth()->user()->name}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
@@ -87,7 +94,9 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2 shadow pad1">
       <div class="profile-picture">
-
+        @if( !$collection->profile->profile_image_url == 'N/A' )
+          <img src="/storage/{{ $collection->profile->profile_image_url }}">
+        @endif
       </div>
       <div class="profile-details">
         <h1>{{ $collection->name }}</h1>
@@ -103,7 +112,7 @@
       </div>
       <div class="col-md-8 col-md-offset-2 mar1">
         <button type="button" class="btn btn-primary nbr btn-shadow add_friend" name="button">add friend</button>
-        <button type="button" class="btn btn-primary nbr btn-shadow" name="button">report this user</button>
+        <button type="button" class="btn btn-disabled nbr btn-shadow" disabled="disabled" name="button">report this user</button>
       </div>
     </div>
   </div>
@@ -124,7 +133,7 @@
     {{-- extract each post from the collection --}}
     @foreach($collection->post as $key => $value)
     <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
+      <div class="panel panel-default home-post">
         <div class="panel-body">
           <a href="/user/{{$collection->id}}" class="bold">{{ $collection->name }}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
@@ -157,7 +166,7 @@
           @endif
         @endforeach
 
-        {{ $likes }} like(s) &middot; {{ $ccount }}  comment(s)
+        <span class="like_count">{{ $likes }}</span> like(s) &middot; {{ $ccount }}  comment(s)
         </div>
       </div>
     </div>

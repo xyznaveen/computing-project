@@ -38,7 +38,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('/images/logo.png') }}"/>
+                        <i class="fa fa-home" aria-hidden="true"></i><h3 title="Project Social Network"> PSN</h3>
                     </a>
                 </div>
 
@@ -55,13 +55,22 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li style="display: inline-block;"><a href="/discover" title="browse different people who have already joined PSN."><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                            <li style="display: inline-block;" class="dropdown">
+                            <li><a href="/discover" title="browse different people who have already joined PSN."><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                            <li><a href="/message" title="exchange messages with your friends."><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <div class="fimg">
-                                        
+                                        <?php 
+                                            $pimg = DB::table('profiles')
+                                                    ->select('profile_image_url as piu')
+                                                    ->where('user_id','=',auth()
+                                                    ->user()->id)
+                                                    ->get(); 
+                                        ?>
+
+                                        <img src="/storage/{{ $pimg->get(0)->piu }}">
                                     </div>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ substr(Auth::user()->name,0,6) }} <span class="caret"></span>
                                 </a>
 
 

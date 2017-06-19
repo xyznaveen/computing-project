@@ -34,7 +34,7 @@
     </div>
     <div class="panel-footer">
       <p>
-        <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{ count($post->like) }} like(s) &nbsp;&middot;&nbsp;
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i> <span class="like_count"></span>{{ count($post->like) }} like(s) &nbsp;&middot;&nbsp;
         <i class="fa fa-comment" aria-hidden="true"></i> {{ count($post->comment) }} comment(s)
       </p>
       <div class="post-comment">
