@@ -22,14 +22,6 @@ class ProfileController extends Controller
       return view('user.profile', compact('collection', 'profile'));
     }
 
-    public function test() {
-      $user = new \App\Post;
-      $users = $user->find(auth()->user()->id)->user();
-
-      dd($users);
-
-    }
-
     public function getUser($id) {
       $user = new \App\User();
       $users = $user->with('like','post')->where('id','=',$id)->first();

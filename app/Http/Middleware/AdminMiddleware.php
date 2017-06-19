@@ -16,12 +16,12 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        foreach (Auth::user()->role as $role) {
-            if ($role->role_name == 'admin') {
-                return $next($request);
+        foreach(Auth::user()->role as $role) {
+            if($role->role_name == 'admin') {
+                return redirect()->route('dboard');
             }
         }
-
-        return redirect()->route('/home');
+        
+        return redirect()->route('home');
     }
 }

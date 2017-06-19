@@ -16,12 +16,9 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        foreach (Auth::user()->role as $role) {
-            if ($role->role_name == 'user') {
-                return $next($request);
-            }
+        if(Auth::user()->role->get(0)->role_name == 'user') {
+            return $next($request);
         }
-
         return redirect()->route('dboard');
     }
 }

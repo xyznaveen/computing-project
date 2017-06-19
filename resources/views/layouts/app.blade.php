@@ -55,9 +55,13 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li class="dropdown">
+                            <li style="display: inline-block;"><a href="/discover" title="browse different people who have already joined PSN."><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                            <li style="display: inline-block;" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="fa fa-user-o" aria-hidden="true"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                                    <div class="fimg">
+                                        
+                                    </div>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
 

@@ -51,6 +51,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'role' => 'required',
         ]);
     }
 
@@ -62,6 +63,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $as = ( $data['role'] === 'admin' ) ? 0 : 1;
+
         $user = User::create([
             'name'          =>  $data['name'],
             'email'         =>  $data['email'],
@@ -78,7 +82,7 @@ class RegisterController extends Controller
             'is_active'         =>  'true',
         ]);
 
-        $user->role()->sync(1);
+        $user->role()->sync($as);
 
         return $user;
     }

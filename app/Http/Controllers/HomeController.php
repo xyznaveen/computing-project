@@ -14,7 +14,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('userm');
     }
 
     /**
@@ -28,7 +27,7 @@ class HomeController extends Controller
 
         $user = \App\User::with('role')->find(auth()->user()->id);
 
-        $collection = $post->with(['user' ,'like','comment'])
+        $collection = $post->with(['user','user.profile','like','comment'])
                             ->join('friends as f','user_two','=','user_id')
                             ->where('f.user_one','=',auth()->user()->id)
                             ->orWhere('f.user_two','=',auth()->user()->id)
@@ -37,9 +36,7 @@ class HomeController extends Controller
         if(count($collection) === 0) {
             $collection = \App\Post::with(['user', 'comment', 'like'])->where('user_id','=',auth()->user()->id)->paginate(8);
         }  
-
-        dd(auth()->user());
-
+        
         return view('home', compact('collection'));
     }
 

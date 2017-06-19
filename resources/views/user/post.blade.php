@@ -5,8 +5,18 @@
 <div class="col-md-8 col-md-offset-2">
   <div class="panel panel-default nbr">
     <div class="panel-body">
+      <?php 
+           $immg = DB::table('profiles')
+                   ->select('profile_image_url as propic')
+                   ->where('user_id','=',$post->user->id)
+                   ->get(); 
+       ?>
       <div class="fimg">
-
+        @foreach($immg as $pro)
+          @if(strlen($pro->propic) >= 10)
+            <img src="/storage/{{ $pro->propic }}">
+          @endif
+        @endforeach
       </div>
       <a href="/user/{{ $post->user->id }}" class="bold">{{ $post->user->name  }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($post->created_at)) }} &middot; {{ date('H:m A', strtotime($post->created_at)) }}">{{ $post->created_at->diffForHumans() }}</a>
@@ -41,8 +51,18 @@
          // fetch user's detail
          $vvv = DB::table('users')->where('id','=',$value->user_id)->get();
         ?>
+        <?php 
+           $immg = DB::table('profiles')
+                   ->select('profile_image_url as propic')
+                   ->where('user_id','=',$value->user_id)
+                   ->get(); 
+         ?>
         <div class="fimg">
-
+          @foreach($immg as $pro)
+            @if(strlen($pro->propic) >= 10)
+              <img src="/storage/{{ $pro->propic }}">
+            @endif
+          @endforeach
         </div>
         <u><a href="/user/{{$vvv[0]->id}}">{{ ($vvv[0]->name) }}</a></u> &nbsp;&nbsp;&nbsp;&nbsp; on {{ date('M d, Y', strtotime($vvv[0]->created_at)) }}
         <p>{{ ($value->text) }}</p>

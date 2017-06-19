@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-{{  session()->has('key') }}
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2 alert alert-success alert-dismissable">
@@ -42,8 +40,18 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default nbr">
         <div class="panel-body nbr">
+           <?php 
+           $immg = DB::table('profiles')
+                   ->select('profile_image_url as propic')
+                   ->where('user_id','=',$value->user->id)
+                   ->get(); 
+           ?>
           <div class="fimg">
-  
+            @foreach($immg as $pro)
+              @if(true)
+                <img src="/storage/{{ $pro->propic }}">
+              @endif
+            @endforeach
           </div>
           <a href="/user/{{ $value->user->id }}" class="bold">{{ $value->user->name  }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>

@@ -72,7 +72,11 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	min-width: 300px;
-	width: 1px;
+}
+
+.nav i {
+	font-size: 100%;
+	transition: all .2s;
 }
 
 .nav nav ul li {
@@ -364,4 +368,14 @@ hr {
 	font-weight: bolder;
 	transition: all 1s;
 	cursor: pointer;
+}
+
+
+.nav li:first-child:hover {
+	background-color: #fafafa;
+}
+
+.nav li:first-child:hover i {
+	transition: all .2s;
+	font-size: 120%;
 }

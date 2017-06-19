@@ -11,7 +11,7 @@ class UpdateController extends Controller
     	$user 		= \App\User::find(auth()->user()->id);
     	$profile	= new \App\Profile();
 
-    	$profile = $profile->find(1);
+    	$profile = $profile->find(auth()->user()->id);
 
     	$user->update(['name'=>$request->input('name')]);
 
