@@ -19,7 +19,7 @@
 	<div class="logo"></div>
 	<div class="nav">
 		<div class="container-fluid">
-			<nav>
+			<nav class="welcome">
 				<ul>
 					<li><a href="/login">login</a></li><!--
 					--><li><a href="/register">register</a></li><!--
