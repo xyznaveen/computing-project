@@ -5,12 +5,12 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2 alert alert-success alert-dismissable">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Error!</strong> Posted your update.
+      <strong>Success!</strong> Posted your update.
     </div>
 
     <div class="col-md-8 col-md-offset-2 alert alert-danger alert-dismissable fade in">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Error!</strong> Please type in some text.
+      <strong>Error!</strong> The post cannot be empty.
     </div>
   </div>
   <div class="row">
@@ -58,12 +58,14 @@
           <hr>
           <p>
             {{ $value->text }}
+            {{ $value }}
           </p>
           <p class="pst">
             <input type="hidden" class="p_token" name="_token" value="{{ csrf_token() }}" />
             <input type="hidden" class="p_userid" name="_userid" value="{{ auth()->user()->id }}" />
             <input type="hidden" class="p_postid" name="_postid" value="{{ $value->id }}" />
             <a class="post_like">Like</a> &middot;
+
             <a class="a" href="/user/{{ $value->user->id }}/post/{{ $value->id }}">Comment</a>
           </p>
         </div>

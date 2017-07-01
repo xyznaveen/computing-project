@@ -31,10 +31,10 @@ class HomeController extends Controller
                             ->join('friends as f','user_two','=','user_id')
                             ->where('f.user_one','=',auth()->user()->id)
                             ->orWhere('f.user_two','=',auth()->user()->id)
-                            ->orderBy('posts.created_at','desc')
+                            ->orderBy('posts.created_at','asc')
                             ->paginate(8);
         if(count($collection) === 0) {
-            $collection = \App\Post::with(['user', 'comment', 'like'])->where('user_id','=',auth()->user()->id)->paginate(8);
+            $collection = \App\Post::with(['user', 'comment', 'like'])->where('user_id','=',auth()->user()->id)->orderBy('posts.created_at','desc')->paginate(8);
         }  
         
         return view('home', compact('collection'));

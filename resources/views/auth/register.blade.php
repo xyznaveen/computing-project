@@ -60,12 +60,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group hid">
                                 <label for="password-confirm" class="col-md-4 control-label">Register As</label>
                                 <div class="col-md-offset-5">
                                     <div class="radio">
-                                        <label><input type="radio" name="role" value="admin">Administrator</label>
-                                        <label><input type="radio" name="role" value="user">Regular User</label>
+                                        <label><input type="radio" name="role" value="admin" >Administrator</label>
+                                        <label><input type="radio" name="role" value="user" checked="checked">Regular User</label>
                                     </div>
 
                                     @if ($errors->has('role'))

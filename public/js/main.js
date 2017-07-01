@@ -15,7 +15,7 @@ function newPost(){
   		success: function(data) {
   			$('textarea').val('');
         $('.alert-success').show(500, function() {
-          $(this).fadeOut(3000);
+          $(this).fadeOut(3000, function() {window.location.reload();});
         });
   		},
   		error: function(data) {
@@ -178,6 +178,13 @@ function newFriend() {
 
 }
 
+// show report form
+function newReport() {
+  $('.btn-report').on('click', function() {
+    $('.report-form').toggleClass('form-hidden');
+  });
+}
+
 function init() {
   $('.alert').hide();
   $('.alert').hide();
@@ -188,6 +195,7 @@ function init() {
   newMessage();
   loadConversation();
   newFriend();
+  newReport();
   interval = setInterval(function(){$('.load-convo').click();}, 5000);
 }
 

@@ -15,7 +15,11 @@ class LikeController extends Controller
         $like->user_id = auth()->user()->id;
         $like->post_id = $request->postid;
         $like->save();
+      } else {
+        $like = $like->where('post_id','=',$request->postid)->where('user_id','=',auth()->user()->id)->first();
+        $like->delete();
       }
+
       $countl = $like->where('post_id','=',$request->postid)->count();
       return $countl;
     }

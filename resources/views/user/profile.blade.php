@@ -10,9 +10,7 @@
       <div class="profile-details">
         <h1>{{ auth()->user()->name }}</h1><span><p>{{ auth()->user()->email }}</p></span>
         <p>From - {{ $profile->address }}</p>
-        <p>Phone - {{ $profile->phone_number }}</p>
-
-        
+        <p>Phone - {{ $profile->phone_number }}</p>        
       </div><!--
       --><div class="profile-details"><br><br>
         <p>Joined on - {{ date('F d, Y', strtotime(auth()->user()->created_at)) }}</p>
@@ -42,8 +40,8 @@
         </div>
         <div class="panel-body">
           <div class="fimg">
-            @if( !$profile->profile_image_url == 'N/A' )
-            <img src="/storage/{{ $profile->profile_image_url }}">
+            @if( $profile->profile_image_url != 'N/A' )
+              <img src="/storage/{{ $profile->profile_image_url }}">
             @endif
           </div>
           <a href="/user/{{auth()->user()->id}}" class="bold">{{auth()->user()->name}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -88,13 +86,13 @@
 @else
 @section('content')
 @if($collection->id == auth()->user()->id)
-<script>window.location = "http://127.0.0.1:8000/profile"</script>
+{{header('Location: '. route('profile'))}}
 @endif
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2 shadow pad1">
       <div class="profile-picture">
-        @if( !$collection->profile->profile_image_url == 'N/A' )
+        @if( $collection->profile->profile_image_url != 'N/A' )
           <img src="/storage/{{ $collection->profile->profile_image_url }}">
         @endif
       </div>
@@ -103,16 +101,31 @@
         <p>{{ $collection->email }}</p>
         <input type="hidden" name="to" class="profile_user_id" value="{{$collection->id}}">
 
-        <p>Joined on - {{ date('F d, Y', strtotime($collection->created_at)) }}</p>
+        <p>Since: {{ date('F d, Y', strtotime($collection->created_at)) }}</p>
         <p>Friend(s) - 0</p>
       </div><!--
       --><div class="profile-details">
-        <p>Total posts - {{ DB::table('posts')->where('user_id', $collection->id)->count() }}</p>
-        <p>Total photos - 0</p>
+        <p>{{ DB::table('posts')->where('user_id', $collection->id)->count() }} post(s)</p>
+        <p>0 photo(s)</p>
       </div>
       <div class="col-md-8 col-md-offset-2 mar1">
         <button type="button" class="btn btn-primary nbr btn-shadow add_friend" name="button">add friend</button>
-        <button type="button" class="btn btn-disabled nbr btn-shadow" disabled="disabled" name="button">report this user</button>
+        <button type="button" class="btn btn-danger nbr btn-shadow btn-report" name="button">report this user</button>
+        <form method="POST" class="report-form form-hidden">
+          <div class="form-group">
+            <label for="email">Describe issue:</label>
+            <textarea name="text" class="form-control nbr"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="hidden" value="{{ $collection->id }}" name="user" />
+          </div>
+          <div class="form-group">
+            <input type="hidden" value="0" name="type" />
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Send!" />
+          </div>
+        </form>
       </div>
     </div>
   </div>
