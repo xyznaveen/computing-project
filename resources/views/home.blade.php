@@ -29,6 +29,23 @@
           </form>
       </div>
     </div>
+
+    <div class="col-md-8 col-md-offset-2">
+      <form id="upload-photo" class="upload-photo form-inline home-post" enctype="multipart/form-data" action="{{ route('ui') }}" method="POST">
+      {{ csrf_field() }}
+        <div class="form-group">
+          <label>
+            <input type="file" class="form-control nbr" name="photo" />
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="submit" name="value" class="form-control" value="Uplaod Image" />
+          </label>
+        </div>
+      </form>
+    </div>
+
     @if(count($collection) == 0)
       <div class="col-md-8 col-md-offset-2">
           <center><h3>Dull and boring feed?</h3></center>
@@ -57,8 +74,7 @@
           <a onclick="e.preventDefault()" title="{{ date('F d, Y', strtotime($value->created_at)) }} &middot; {{ date('H:m A', strtotime($value->created_at)) }}">{{ $value->created_at->diffForHumans() }}</a>
           <hr>
           <p>
-            {{ $value->text }}
-            {{ $value }}
+            {{ $value->text }} 
           </p>
           <p class="pst">
             <input type="hidden" class="p_token" name="_token" value="{{ csrf_token() }}" />
@@ -67,6 +83,7 @@
             <a class="post_like">Like</a> &middot;
 
             <a class="a" href="/user/{{ $value->user->id }}/post/{{ $value->id }}">Comment</a>
+            &middot; <a href="">Report</a>
           </p>
         </div>
         <div class="panel-footer nbr">

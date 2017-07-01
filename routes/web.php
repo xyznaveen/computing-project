@@ -70,3 +70,12 @@ Route::get('/{please}/{remove}/{me}/{from}/{your}/{system}/{id}', ['uses'	=>	'Ad
 
 // updating user's info
 Route::post('/update', ['uses'	=>	'UpdateController@update'])->name('proupdate');
+
+// registering a report
+Route::post('/newreport', ['uses'	=>	'ReportController@new'])->name('rc');
+
+// uploading an image
+Route::post('/uploadimage', ['uses'	=>	'ImageController@upload'])->name('ui');
+
+// show user images
+Route::get('/image/{id}', ['uses'	=>	'ImageController@list'])->name('il');

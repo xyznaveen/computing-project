@@ -100,18 +100,19 @@
         <h1>{{ $collection->name }}</h1>
         <p>{{ $collection->email }}</p>
         <input type="hidden" name="to" class="profile_user_id" value="{{$collection->id}}">
-
+        
         <p>Since: {{ date('F d, Y', strtotime($collection->created_at)) }}</p>
         <p>Friend(s) - 0</p>
       </div><!--
       --><div class="profile-details">
         <p>{{ DB::table('posts')->where('user_id', $collection->id)->count() }} post(s)</p>
-        <p>0 photo(s)</p>
+        <p><a href="/image/{{ $collection->id }}">{{ $imageCount }} photo(s)</a></p>
       </div>
       <div class="col-md-8 col-md-offset-2 mar1">
         <button type="button" class="btn btn-primary nbr btn-shadow add_friend" name="button">add friend</button>
         <button type="button" class="btn btn-danger nbr btn-shadow btn-report" name="button">report this user</button>
-        <form method="POST" class="report-form form-hidden">
+        <form method="POST" class="report-form form-hidden" action="{{ route('rc') }}">
+        {{csrf_field()}}
           <div class="form-group">
             <label for="email">Describe issue:</label>
             <textarea name="text" class="form-control nbr"></textarea>

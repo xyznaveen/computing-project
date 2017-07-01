@@ -7,8 +7,20 @@ use Illuminate\Http\Request;
 class ReportController extends Controller
 {
     
-	public function new() {
-		
+	public function new(Request $request) {
+		$text = $request->input('text');
+		$user = $request->input('user');
+		$type = $request->input('type');
+
+		$report = new \App\Report();
+		$report->report_type = $type;
+		$report->report_text = $text;
+		$report->reported_by = auth()->user()->id;
+		$report->flaged_id = $user;
+		$report->save();
+
+		return redirect()->back();
+
 	}
 
 }

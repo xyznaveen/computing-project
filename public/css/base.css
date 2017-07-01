@@ -492,3 +492,28 @@ hr {
 	resize: none;
 	height: 120px;
 }
+
+.upload-photo {
+	margin-bottom: 2rem;
+	padding: 1rem;
+}
+
+.uploaded-image {
+	width: 250px;
+	display: inline-block;
+	margin-left: 3rem;
+	transition: all 1s;
+	margin-bottom: 4rem;
+	margin-top: 4rem;
+}
+
+.uploaded-image img{
+	width: 100%;
+	height: auto;
+	background-color: #333;
+	transition: all 1s;
+}
+
+.uploaded-image img:hover{
+	transform: scale(2);
+}
