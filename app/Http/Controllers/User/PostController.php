@@ -9,9 +9,9 @@ class PostController extends Controller
 {
 
     public function index($userid,$postid){
-
+      
       $post = \App\Post::with(['user', 'like', 'comment'])
-                         ->orderBy('created_at','desc')->find($postid);
+                         ->find($postid);
 
       return view('user.post', ['post' => $post]);
     }

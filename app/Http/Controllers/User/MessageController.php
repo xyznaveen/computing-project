@@ -9,12 +9,6 @@ class MessageController extends Controller
 {
 
     public function index() {
-
-      // $messages = \App\Message::with('receivedBy')
-      //             ->where('sent_by','=',auth()->user()->id)
-      //             ->orWhere('received_by','=',3)
-      //             ->orderBy('created_at','desc')
-      //             ->get();
       return view('message');
     }
 

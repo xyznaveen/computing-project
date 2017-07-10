@@ -81,9 +81,9 @@
             <input type="hidden" class="p_userid" name="_userid" value="{{ auth()->user()->id }}" />
             <input type="hidden" class="p_postid" name="_postid" value="{{ $value->id }}" />
             <a class="post_like">Like</a> &middot;
-
+            
             <a class="a" href="/user/{{ $value->user->id }}/post/{{ $value->id }}">Comment</a>
-            &middot; <a href="">Report</a>
+            &middot; <a href="/report/{{ $value->id }}">Report</a>
           </p>
         </div>
         <div class="panel-footer nbr">

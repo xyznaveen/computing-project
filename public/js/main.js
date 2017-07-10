@@ -183,14 +183,6 @@ function newReport() {
   $('.btn-report').on('click', function() {
     $('.report-form').toggleClass('form-hidden');
   });
-  
-  var toggled = false;
-  var pos = 0;
-
-  $('.uploaded-image').on('click', function() {
-    
-  });
-
 }
 
 function init() {

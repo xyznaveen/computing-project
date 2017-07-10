@@ -40,7 +40,7 @@ Route::get('/user/{id}', [
   'uses' => 'User\ProfileController@getUser'
 ]);
 
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/{csrft}/{user}/{post}', ['uses' => 'LikeController@newLike']);
 Route::get('/do/comment/{postid}/{comment}', ['uses' => 'User\CommentController@newComment']);
@@ -79,3 +79,10 @@ Route::post('/uploadimage', ['uses'	=>	'ImageController@upload'])->name('ui');
 
 // show user images
 Route::get('/image/{id}', ['uses'	=>	'ImageController@list'])->name('il');
+
+// help file
+Route::get('/help', function() {
+	return view('help');
+});
+
+Route::get('/report/{pid}', 'ReportController@postReport');

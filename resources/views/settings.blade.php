@@ -30,11 +30,17 @@
         </div>
       </div>
       <div class="form-group">
+        <div class="col-sm-4 col-md-offset-2">
+          <a href="/2zcp5uz/cinF2cz43l/4GbYu8wt/wAHI2Aj/57AW4GbYu8w/ypW0tp5ueld/{{ auth()->user()->id }}">Deactivate / delete my account</a>
+        </div>
+      </div>
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-4">
           <button type="submit" class="btn btn-default">Save Changes</button>
         </div>
       </div>
     </form>
+
   </div>
 </div>
 

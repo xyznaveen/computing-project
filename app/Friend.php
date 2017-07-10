@@ -10,6 +10,8 @@ class Friend extends Model
       'user_one','user_two',
     ];
 
+    protected $primaryKey = 'friend';
+
     public function friendWith() {
       return $this->belongsTo('App\User', 'user_one');
     }
