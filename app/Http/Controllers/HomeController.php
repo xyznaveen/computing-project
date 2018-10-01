@@ -27,13 +27,8 @@ class HomeController extends Controller
         $post = new \App\Post();
 
         $user = \App\User::with('role')->find(auth()->user()->id);
-        
-        // $collection = $post->with(['user','user.profile','like','comment'])
-        //                     ->where('friends.user_one',$user->id)
-        //                     ->orWhere('friends.user_two',$user->id)
-        //                     ->orderBy('posts.created_at','desc')
-        //                     ->paginate(8);
 
+        // select all posts of the user and user's friends
         $collection = $post->with(['user','user.profile','like','comment'])
                            ->where('user_id', function($query) {
                                 $query->select('user_one')->from('friends')
@@ -43,10 +38,7 @@ class HomeController extends Controller
                            ->orderBy('posts.created_at','desc')
                            ->paginate(8);
         
-        // if(count($collection) === 0) {
-        //     $collection = \App\Post::with(['user', 'comment', 'like'])->where('user_id','=',auth()->user()->id)->orderBy('posts.created_at','desc')->paginate(8);
-        // }  
-        
+        // return the data to the view
         return view('home', compact('collection'));
     }
 

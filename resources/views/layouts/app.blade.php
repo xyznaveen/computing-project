@@ -75,7 +75,7 @@
 
 
                                 <ul class="dropdown-menu" role="menu">
-
+                                    <li><a href="/help">Help</a></li>
                                     <li><a href="/">Dashboard</a></li>
                                     <li><a href="{{ route('notification') }}">Notifications - <span class="new-notification">0</span></a></li>
                                     <li class="border-above"><a href=" {{ route('profile') }} ">My Profile</a></li>

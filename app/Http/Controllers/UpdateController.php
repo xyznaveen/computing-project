@@ -11,17 +11,23 @@ class UpdateController extends Controller
     	$user 		= \App\User::find(auth()->user()->id);
     	$profile	= new \App\Profile();
 
+        // find the user profile
     	$profile = $profile->find(auth()->user()->id);
 
     	$user->update(['name'=>$request->input('name')]);
 
+        // insert new details for the user 
+        // which the ser has provided
     	$profile->address = $request->input('address');
     	$profile->phone_number = $request->input('phone-number');
     	$profile->profile_url = 'N/A';
     	$profile->is_active = 'true';
 
+        // check if image exists
     	if($request->file('picture')){
 
+            // move the image to the permanent place
+            // and store it in the database
     		$imgName = auth()->user()->name.'_'. auth()->user()->email .'_'.auth()->user()->id.'.jpg';
 
     		$request->file('picture')->storeAs('public/images', $imgName);
@@ -29,6 +35,7 @@ class UpdateController extends Controller
 
     	}
 
+        // update details
     	$profile->save();
 
     	return redirect()->route('profile');
